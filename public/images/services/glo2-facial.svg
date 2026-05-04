@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <rect width="600" height="400" fill="#111"/>
+  <rect x="0" y="360" width="600" height="40" fill="#C9A84C" opacity="0.1"/>
+  <text x="300" y="200" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#C9A84C" opacity="0.3">SERVICE IMAGE</text>
+</svg>
