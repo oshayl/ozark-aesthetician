@@ -111,10 +111,10 @@ export default function Home() {
             </RevealSection>
 
             <RevealSection delay={300}>
-              <p className="text-lg md:text-xl text-gray-400 font-light mb-2 tracking-wide">
+              <p className="text-lg md:text-xl text-white font-light mb-2 tracking-wide">
                 Acne · Aging · Skin Correction Expert
               </p>
-              <p className="text-base text-gray-500 mb-10">
+              <p className="text-base text-gold mb-10">
                 Hydrafacial · Microneedling · Customized Skincare
               </p>
             </RevealSection>
