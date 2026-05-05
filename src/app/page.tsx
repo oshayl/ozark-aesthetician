@@ -105,10 +105,9 @@ export default function Home() {
             </RevealSection>
 
             <RevealSection delay={150}>
-              <h1 className="text-5xl md:text-7xl font-serif font-medium leading-tight mb-6">
-                <span className="text-white">Advanced Clinical</span><br />
-                <span className="text-gold-gradient">Aesthetician</span>
-              </h1>
+              <div className="mb-8">
+                <img src="/images/logo/logo-white.png" alt="The Ozark Aesthetician" className="w-64 md:w-80 mx-auto" />
+              </div>
             </RevealSection>
 
             <RevealSection delay={300}>

@@ -22,14 +22,8 @@ export default function Navbar() {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-black/95 backdrop-blur-md shadow-lg shadow-black/20' : 'bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-8 h-8 rounded-full border border-gold/40 flex items-center justify-center group-hover:border-gold transition-colors">
-            <span className="text-gold font-serif text-sm font-medium">OA</span>
-          </div>
-          <div className="leading-tight">
-            <div className="text-sm font-medium tracking-[0.2em] text-gold">THE OZARK</div>
-            <div className="text-[9px] tracking-[0.3em] text-gray-400">AESTHETICIAN</div>
-          </div>
+        <Link href="/" className="flex items-center gap-2">
+          <img src="/images/logo/logo-white.png" alt="The Ozark Aesthetician" className="h-8 w-auto" />
         </Link>
         <div className="hidden md:flex items-center gap-8">
           {NAV_ITEMS.map((item, i) => (
