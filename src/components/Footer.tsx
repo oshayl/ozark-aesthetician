@@ -18,7 +18,7 @@ export default function Footer() {
           <div>
             <h4 className="text-xs tracking-[0.2em] text-gold uppercase mb-4 font-medium">Services</h4>
             <div className="space-y-2">
-              {["BOTOX & Fillers", "Hydrafacial MD", "Microneedling", "Chemical Peels", "Dermaplaning", "Customized Facials"].map((s) => (
+              {["Hydrafacial MD", "Microneedling", "Chemical Peels", "Dermaplaning", "Customized Facials"].map((s) => (
                 <a key={s} href="#services" className="block text-sm text-gray-400 hover:text-white transition-colors">{s}</a>
               ))}
             </div>

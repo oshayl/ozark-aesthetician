@@ -12,17 +12,7 @@ const CREDENTIALS = [
 ];
 
 const SERVICE_CATEGORIES = [
-  {
-    id: 'injectables',
-    label: 'Injectables',
-    icon: Syringe,
-    items: [
-      { name: 'BOTOX Treatments', desc: 'Smooth fine lines and wrinkles with precision' },
-      { name: 'JUVÉDERM Treatments', desc: 'Restore volume and youthful contours' },
-      { name: 'Lip Fillers', desc: 'Natural-looking lip enhancement' },
-      { name: 'Sculptra Treatments', desc: 'Collagen stimulation for lasting results' },
-    ],
-  },
+
   {
     id: 'skin',
     label: 'Skin',
@@ -52,7 +42,7 @@ const SERVICE_CATEGORIES = [
   },
 ];
 
-import { Sparkles, Droplets, Gem, Trophy, Calendar, MapPin, Syringe } from 'lucide-react';
+import { Sparkles, Gem, Trophy, Calendar, MapPin } from 'lucide-react';
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
