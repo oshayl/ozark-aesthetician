@@ -106,7 +106,7 @@ export default function Home() {
 
             <RevealSection delay={150}>
               <div className="mb-8">
-                <img src="/images/logo/logo-white.png" alt="The Ozark Aesthetician" className="w-64 md:w-80 mx-auto" />
+                <img src="/images/logo/logo-white.png" alt="The Ozark Aesthetician" className="w-72 md:w-[28rem] lg:w-[36rem] mx-auto" />
               </div>
             </RevealSection>
 
