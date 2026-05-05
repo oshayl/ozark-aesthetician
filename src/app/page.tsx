@@ -15,7 +15,7 @@ const SERVICE_CATEGORIES = [
   {
     id: 'injectables',
     label: 'Injectables',
-    icon: '💉',
+    icon: Syringe,
     items: [
       { name: 'BOTOX Treatments', desc: 'Smooth fine lines and wrinkles with precision' },
       { name: 'JUVÉDERM Treatments', desc: 'Restore volume and youthful contours' },
@@ -26,7 +26,7 @@ const SERVICE_CATEGORIES = [
   {
     id: 'skin',
     label: 'Skin',
-    icon: '✨',
+    icon: Sparkles,
     items: [
       { name: 'VI Precision Plus Peels', desc: 'Advanced chemical peel for hyperpigmentation' },
       { name: 'BioRePeel', desc: 'No-downtime bio-stimulating peel' },
@@ -42,7 +42,7 @@ const SERVICE_CATEGORIES = [
   {
     id: 'signature',
     label: 'Signature',
-    icon: '💎',
+    icon: Gem,
     items: [
       { name: 'Hydrafacial MD', desc: 'Multi-step hydration and extraction', featured: true },
       { name: 'Glo2 Facial System', desc: 'Oxygenation and luminous results' },
@@ -52,7 +52,7 @@ const SERVICE_CATEGORIES = [
   },
 ];
 
-// ── Intersection Observer Hook ──
+import { Sparkles, Droplets, Gem, Trophy, Calendar, MapPin, Syringe } from 'lucide-react';
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
@@ -147,7 +147,7 @@ export default function Home() {
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center">
                       <div className="w-20 h-20 mx-auto mb-4 rounded-full border border-gold/30 flex items-center justify-center group-hover:border-gold group-hover:scale-110 transition-all duration-500">
-                        <span className="text-3xl">💎</span>
+                        <Gem className="text-gold w-8 h-8" />
                       </div>
                       <p className="text-xs text-gray-500 tracking-[0.2em] uppercase">Hydrafacial MD</p>
                       <p className="text-[10px] text-gray-600 mt-1">600 × 450</p>
@@ -159,7 +159,7 @@ export default function Home() {
               <RevealSection delay={200}>
                 <div>
                   <span className="text-[10px] tracking-[0.25em] text-gold uppercase font-medium">Featured Treatment</span>
-                  <h2 className="text-3xl md:text-4xl font-serif mt-3 mb-6">Hydrafacial MD <span className="text-gold">✨</span></h2>
+                  <h2 className="text-3xl md:text-4xl font-serif mt-3 mb-6">Hydrafacial MD <Sparkles className="inline w-6 h-6 text-gold" /></h2>
                   <p className="text-gray-400 leading-relaxed mb-6">
                     The <strong className="text-white">Hydrafacial MD</strong> is a multi-step treatment that cleanses, exfoliates, extracts, and hydrates — all in one session. Suitable for <strong className="text-white">every skin type</strong>, it delivers instant, visible results with zero downtime.
                   </p>
@@ -206,7 +206,7 @@ export default function Home() {
                         : 'border-white/10 text-gray-400 hover:border-gold/40 hover:text-gold'
                     }`}
                   >
-                    <span>{cat.icon}</span>
+                    <cat.icon className="w-3.5 h-3.5" />
                     <span>{cat.label}</span>
                   </button>
                 ))}
@@ -292,7 +292,7 @@ export default function Home() {
                   {/* Award Card */}
                   <div className="p-6 bg-charcoal border border-gold/20 rounded-lg mb-6 hover:border-gold/40 transition-all duration-300">
                     <div className="flex items-center gap-3 mb-4">
-                      <span className="text-2xl">🏆</span>
+                      <Trophy className="w-7 h-7 text-gold" />
                       <div>
                         <div className="text-sm font-medium text-gold">Best of the Lake 2026</div>
                         <div className="text-xs text-gray-500">Lake Lifestyles Magazine</div>
@@ -337,7 +337,7 @@ export default function Home() {
               <div className="bg-charcoal border border-white/5 rounded-lg p-8 min-h-[400px] flex items-center justify-center hover:border-gold/20 transition-all duration-500">
                 <div className="text-center">
                   <div className="w-16 h-16 mx-auto mb-4 rounded-full border border-gold/30 flex items-center justify-center hover:border-gold hover:scale-110 transition-all duration-300">
-                    <span className="text-2xl">📅</span>
+                    <Calendar className="w-8 h-8 text-gold" />
                   </div>
                   <p className="text-sm text-gray-400 mb-2">Vagaro Booking Widget</p>
                   <p className="text-xs text-gray-600">Replace this placeholder with your Vagaro embed code</p>
@@ -380,7 +380,7 @@ export default function Home() {
               <RevealSection delay={200}>
                 <div className="bg-charcoal border border-white/5 rounded-lg overflow-hidden min-h-[300px] flex items-center justify-center hover:border-gold/20 transition-all duration-300">
                   <div className="text-center">
-                    <span className="text-3xl mb-3 block">🗺️</span>
+                    <MapPin className="w-8 h-8 text-gold" />
                     <p className="text-xs text-gray-400">Google Maps Embed</p>
                     <p className="text-[10px] text-gray-600 mt-1">1000 US-54, Camdenton, MO 65020</p>
                   </div>
