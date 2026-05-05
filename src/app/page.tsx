@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
@@ -40,25 +40,14 @@ const SERVICE_CATEGORIES = [
     ],
   },
   {
-    id: 'laser',
-    label: 'Laser',
-    icon: '⚡',
-    items: [
-      { name: 'Aerolase', desc: 'Acne, rosacea, facial veins, melasma', featured: true },
-      { name: 'Laser Hair Reduction', desc: 'Permanent hair reduction for all skin types' },
-      { name: 'Laser Resurfacing', desc: 'Skin texture and scar improvement' },
-      { name: 'Laser Tattoo Removal', desc: 'Safe and effective removal' },
-      { name: 'Laser Skin Tightening', desc: 'Firmer, more youthful skin' },
-      { name: 'RF Microneedling / SkinPen', desc: 'Collagen induction for rejuvenation' },
-    ],
-  },
-  {
     id: 'signature',
     label: 'Signature',
     icon: '💎',
     items: [
-      { name: 'Hydrafacial MD', desc: 'Multi-step hydration and extraction' },
+      { name: 'Hydrafacial MD', desc: 'Multi-step hydration and extraction', featured: true },
       { name: 'Glo2 Facial System', desc: 'Oxygenation and luminous results' },
+      { name: 'Microneedling (RF / SkinPen)', desc: 'Collagen induction for skin rejuvenation' },
+      { name: 'Aerolase', desc: 'Acne, rosacea, facial veins, melasma — gentle for all skin types' },
     ],
   },
 ];
@@ -123,14 +112,12 @@ export default function Home() {
       <main>
         {/* ── Hero ── */}
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-black">
-            <div className="absolute inset-0 bg-gradient-to-br from-gold/[0.07] via-transparent to-transparent" />
-            <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-gold/[0.03] blur-[100px] animate-pulse" />
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black" />
+            {/* Real background image */}
+            <img src="/images/hero/skin-bg.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-40" />
+            <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-gold/[0.06] blur-[120px]" />
             <div className="absolute bottom-0 left-0 right-0 h-px lake-shimmer" />
-            {/* Floating particles */}
-            <div className="absolute top-1/4 left-1/4 w-1 h-1 rounded-full bg-gold/30 animate-bounce" style={{ animationDuration: '3s' }} />
-            <div className="absolute top-1/3 right-1/3 w-1 h-1 rounded-full bg-gold/20 animate-bounce" style={{ animationDuration: '5s' }} />
-            <div className="absolute bottom-1/3 left-1/2 w-0.5 h-0.5 rounded-full bg-gold/25 animate-bounce" style={{ animationDuration: '4s' }} />
           </div>
 
           <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
@@ -153,7 +140,7 @@ export default function Home() {
                 Acne · Aging · Skin Correction Expert
               </p>
               <p className="text-base text-gray-500 mb-10">
-                Laser · Hydrafacial · Microneedling
+                Hydrafacial · Microneedling · Customized Skincare
               </p>
             </RevealSection>
 
@@ -184,7 +171,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── Aerolase Feature ── */}
+        {/* ── Hydrafacial Feature ── */}
         <section id="aerolase" className="py-24 px-6">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -194,9 +181,9 @@ export default function Home() {
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center">
                       <div className="w-20 h-20 mx-auto mb-4 rounded-full border border-gold/30 flex items-center justify-center group-hover:border-gold group-hover:scale-110 transition-all duration-500">
-                        <span className="text-3xl">⚡</span>
+                        <span className="text-3xl">💎</span>
                       </div>
-                      <p className="text-xs text-gray-500 tracking-[0.2em] uppercase">Aerolase Image</p>
+                      <p className="text-xs text-gray-500 tracking-[0.2em] uppercase">Hydrafacial MD</p>
                       <p className="text-[10px] text-gray-600 mt-1">600 × 450</p>
                     </div>
                   </div>
@@ -206,12 +193,12 @@ export default function Home() {
               <RevealSection delay={200}>
                 <div>
                   <span className="text-[10px] tracking-[0.25em] text-gold uppercase font-medium">Featured Treatment</span>
-                  <h2 className="text-3xl md:text-4xl font-serif mt-3 mb-6">Meet Aerolase <span className="text-gold">✨</span></h2>
+                  <h2 className="text-3xl md:text-4xl font-serif mt-3 mb-6">Hydrafacial MD <span className="text-gold">✨</span></h2>
                   <p className="text-gray-400 leading-relaxed mb-6">
-                    This advanced laser treatment targets <strong className="text-white">acne, redness, pigmentation, and signs of aging</strong> — all while being safe for every skin type.
+                    The <strong className="text-white">Hydrafacial MD</strong> is a multi-step treatment that cleanses, exfoliates, extracts, and hydrates — all in one session. Suitable for <strong className="text-white">every skin type</strong>, it delivers instant, visible results with zero downtime.
                   </p>
                   <div className="space-y-3 mb-8">
-                    {["Acne & Rosacea", "Facial Veins", "Melasma & Pigmentation", "Skin Tightening & Anti-Aging"].map((t, i) => (
+                    {["Deep Cleansing & Exfoliation", "Painless Extraction", "Intense Hydration & Infusion", "Instant Glow, Zero Downtime"].map((t, i) => (
                       <div key={t} className="flex items-center gap-3 group cursor-default">
                         <span className="w-1.5 h-1.5 rounded-full bg-gold group-hover:w-3 group-hover:bg-gold transition-all duration-300" />
                         <span className="text-sm text-gray-300 group-hover:text-white transition-colors">{t}</span>
@@ -219,7 +206,7 @@ export default function Home() {
                     ))}
                   </div>
                   <a href="#book" className="inline-block px-6 py-2.5 border border-gold text-gold text-xs tracking-[0.15em] uppercase hover:bg-gold hover:text-black transition-all duration-300">
-                    Book Aerolase Treatment
+                    Book Hydrafacial
                   </a>
                 </div>
               </RevealSection>
@@ -311,6 +298,10 @@ export default function Home() {
                 <div>
                   <span className="text-[10px] tracking-[0.25em] text-gold uppercase font-medium">Your Aesthetician</span>
                   <h2 className="text-3xl md:text-4xl font-serif mt-3 mb-6">Miriah Adams</h2>
+                  {/* Real photo of Miriah */}
+                  <div className="relative w-48 h-48 mx-auto md:mx-0 mb-6 rounded-full overflow-hidden border-2 border-gold/30">
+                    <img src="/images/about/miriah.jpg" alt="Miriah Adams - The Ozark Aesthetician" className="w-full h-full object-cover" />
+                  </div>
                   <p className="text-gray-400 leading-relaxed mb-6">
                     With over <strong className="text-white">18 years</strong> in the aesthetics industry, Miriah brings unparalleled expertise to every treatment. Recognized as the <strong className="text-gold">Best Aesthetician</strong> by Lake Lifestyles Magazine&apos;s Best of the Lake 2026, she combines advanced clinical knowledge with a personalized approach to deliver real results.
                   </p>
@@ -322,6 +313,16 @@ export default function Home() {
 
               <RevealSection delay={200}>
                 <div>
+                  {/* Lake background accent */}
+                  <div className="relative rounded-lg overflow-hidden mb-6 border border-white/5">
+                    <img src="/images/hero/lake-bg.jpg" alt="Lake of the Ozarks" className="w-full h-48 object-cover opacity-70" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+                    <div className="absolute bottom-3 left-4">
+                      <p className="text-xs text-gold tracking-[0.2em] uppercase">Lake of the Ozarks</p>
+                      <p className="text-[10px] text-gray-400">Camdenton, Missouri</p>
+                    </div>
+                  </div>
+
                   {/* Award Card */}
                   <div className="p-6 bg-charcoal border border-gold/20 rounded-lg mb-6 hover:border-gold/40 transition-all duration-300">
                     <div className="flex items-center gap-3 mb-4">
@@ -340,7 +341,7 @@ export default function Home() {
                     <div className="space-y-3">
                       {CREDENTIALS.map((cred, i) => (
                         <div key={cred} className="flex items-center gap-3 group">
-                          <span className={`w-1 h-1 rounded-full bg-gold shrink-0 transition-all duration-300 group-hover:w-2 group-hover:h-2`} />
+                          <span className="w-1 h-1 rounded-full bg-gold shrink-0 transition-all duration-300 group-hover:w-2 group-hover:h-2" />
                           <span className="text-sm text-gray-300 group-hover:text-white transition-colors">{cred}</span>
                         </div>
                       ))}
