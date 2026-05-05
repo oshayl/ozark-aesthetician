@@ -269,7 +269,7 @@ export default function Home() {
                     <img src="/images/about/miriah.jpg" alt="Miriah Adams - The Ozark Aesthetician" className="w-full h-full object-cover" />
                   </div>
                   <p className="text-gray-400 leading-relaxed mb-6">
-                    With over <strong className="text-white">18 years</strong> in the aesthetics industry, Miriah brings unparalleled expertise to every treatment. Recognized as the <strong className="text-gold">Best Aesthetician</strong> by Lake Lifestyles Magazine&apos;s Best of the Lake 2026, she combines advanced clinical knowledge with a personalized approach to deliver real results.
+                    With over <strong className="text-white">18 years</strong> in the aesthetics industry, Miriah brings unparalleled expertise to every treatment. Recognized as the <strong className="text-gold">Best Aesthetician</strong>{' '}by Lake Lifestyles Magazine&apos;s Best of the Lake 2026, she combines advanced clinical knowledge with a personalized approach to deliver real results.
                   </p>
                   <p className="text-gray-500 text-sm leading-relaxed">
                     Every treatment plan is customized — because your skin is unique. Whether you&apos;re addressing acne, signs of aging, or simply want to maintain your glow, Miriah&apos;s expertise ensures you receive the most effective, evidence-based care.
