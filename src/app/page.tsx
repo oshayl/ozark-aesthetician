@@ -76,30 +76,6 @@ function RevealSection({ children, className = '', delay = 0 }: { children: Reac
   );
 }
 
-// ── Counter Animation ──
-function AnimatedCounter({ end, label, suffix = '' }: { end: number; label: string; suffix?: string }) {
-  const { ref, inView } = useInView();
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    if (!inView) return;
-    let start = 0;
-    const duration = 1500;
-    const step = (timestamp: number) => {
-      if (!start) start = timestamp;
-      const progress = Math.min((timestamp - start) / duration, 1);
-      setCount(Math.floor(progress * end));
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }, [inView, end]);
-  return (
-    <div ref={ref} className="text-center">
-      <div className="text-3xl md:text-4xl font-serif text-gold">{count}{suffix}</div>
-      <div className="text-xs tracking-[0.15em] text-gray-500 uppercase mt-1">{label}</div>
-    </div>
-  );
-}
-
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState('injectables');
   const [expandedService, setExpandedService] = useState<string | null>(null);
@@ -159,15 +135,6 @@ export default function Home() {
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce" style={{ animationDuration: '2s' }}>
             <span className="text-[10px] tracking-[0.2em] text-gray-600 uppercase">Scroll</span>
             <div className="w-px h-8 bg-gradient-to-b from-gold/40 to-transparent" />
-          </div>
-        </section>
-
-        {/* ── Stats Bar ── */}
-        <section className="py-12 px-6 border-y border-white/5 bg-charcoal/30">
-          <div className="max-w-5xl mx-auto grid grid-cols-3 gap-8">
-            <AnimatedCounter end={18} suffix="+" label="Years Experience" />
-            <AnimatedCounter end={5} label="Professional Credentials" />
-            <AnimatedCounter end={1} label="Best of the Lake Award" />
           </div>
         </section>
 
