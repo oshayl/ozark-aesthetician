@@ -284,7 +284,7 @@ export default function Home() {
                   <span className="text-[10px] tracking-[0.25em] text-gold uppercase font-medium">Your Aesthetician</span>
                   <h2 className="text-3xl md:text-4xl font-serif mt-3 mb-6">Miriah Adams</h2>
                   <div className="relative w-52 h-52 mx-auto md:mx-0 mb-8 rounded-full overflow-hidden border-2 border-gold/30">
-                    <img src="/images/about/miriah-portrait.jpg" alt="Miriah Adams" className="w-full h-full object-cover" />
+                    <img src="/images/about/miriah-circle.jpg" alt="Miriah Adams" className="w-full h-full object-cover" />
                   </div>
                   <p className="text-gray-400 leading-relaxed mb-6">
                     With over <strong className="text-white">18 years</strong> in the aesthetics industry, Miriah brings unparalleled expertise to every treatment. Recognized as the <strong className="text-gold">Best Aesthetician</strong>{' '}by Lake Lifestyles Magazine&apos;s Best of the Lake 2026, she combines advanced clinical knowledge with a personalized approach to deliver real results.
@@ -298,11 +298,11 @@ export default function Home() {
               <RevealSection delay={200}>
                 <div>
                   <div className="relative rounded-lg overflow-hidden mb-6 border border-white/5">
-                    <img src="/images/hero/lake-bg.jpg" alt="Lake of the Ozarks" className="w-full h-48 object-cover opacity-70" />
+                    <img src="/images/about/miriah-studio.jpg" alt="Inside the studio" className="w-full h-48 object-cover opacity-70" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                     <div className="absolute bottom-3 left-4">
-                      <p className="text-xs text-gold tracking-[0.2em] uppercase">Lake of the Ozarks</p>
-                      <p className="text-[10px] text-gray-400">Camdenton, Missouri</p>
+                      <p className="text-xs text-gold tracking-[0.2em] uppercase">The Studio</p>
+                      <p className="text-[10px] text-gray-400">Lake of the Ozarks, MO</p>
                     </div>
                   </div>
 
