@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { Sparkles, Gem, Trophy, Calendar, MapPin, ChevronDown, Droplets, Zap, Microscope, Heart, Star, Sun } from 'lucide-react';
 
 const CREDENTIALS = [
   "Advanced Clinical Skin Specialist",
@@ -12,37 +13,51 @@ const CREDENTIALS = [
 ];
 
 const SERVICE_CATEGORIES = [
-
   {
     id: 'skin',
-    label: 'Skin',
+    label: 'Skin Treatments',
     icon: Sparkles,
     items: [
-      { name: 'VI Precision Plus Peels', desc: 'Advanced chemical peel for hyperpigmentation' },
-      { name: 'BioRePeel', desc: 'No-downtime bio-stimulating peel' },
-      { name: 'PRX T33 Peel', desc: 'Deep hydration and skin tightening' },
-      { name: 'Chemical Peels', desc: 'Customized for your skin type' },
-      { name: 'Dermaplaning', desc: 'Smooth, radiant skin instantly' },
-      { name: 'Acne Treatment', desc: 'Targeted solutions for clear skin' },
-      { name: 'Men\'s Grooming Facial', desc: 'Designed for men\'s skincare needs' },
-      { name: 'Luxury Facials', desc: 'Indulgent treatments for glowing skin' },
-      { name: 'Customized Facials', desc: 'Tailored to your unique skin goals' },
+      { name: 'VI Precision Plus Peels', desc: 'Advanced chemical peel targeting hyperpigmentation and sun damage for brighter, more even skin.' },
+      { name: 'BioRePeel', desc: 'No-downtime bio-stimulating peel that revitalizes without peeling — perfect for busy schedules.' },
+      { name: 'PRX T33 Peel', desc: 'Deep hydration and biorevitalization without exfoliation. Glass skin in one session.' },
+      { name: 'Chemical Peels', desc: 'Medical-grade peels customized for your skin type and concerns.' },
+      { name: 'Dermaplaning', desc: 'Physical exfoliation that removes dead skin and peach fuzz for instant radiance.' },
+      { name: 'Acne Treatment', desc: 'Targeted clinical solutions for active breakouts, scarring, and prevention.' },
+      { name: "Men's Grooming Facial", desc: "Designed for men's thicker skin and shaving-related concerns." },
+      { name: 'Luxury Facials', desc: 'Indulgent multi-step treatments for deep relaxation and glowing results.' },
+      { name: 'Customized Facials', desc: 'Tailored to your unique skin goals — never cookie-cutter.' },
     ],
   },
   {
     id: 'signature',
-    label: 'Signature',
+    label: 'Signature Treatments',
     icon: Gem,
     items: [
-      { name: 'Hydrafacial MD', desc: 'Multi-step hydration and extraction', featured: true },
-      { name: 'Glo2 Facial System', desc: 'Oxygenation and luminous results' },
-      { name: 'Microneedling (RF / SkinPen)', desc: 'Collagen induction for skin rejuvenation' },
-      { name: 'Aerolase', desc: 'Acne, rosacea, facial veins, melasma — gentle for all skin types' },
+      { name: 'Hydrafacial MD', desc: 'Multi-step cleansing, exfoliation, extraction, and hydration — instant glow, zero downtime.', featured: true },
+      { name: 'Glo2 Facial System', desc: 'Oxygenation and luminous results through patented OxyPod technology.' },
+      { name: 'Microneedling (RF / SkinPen)', desc: 'Collagen induction therapy for fine lines, texture, and scarring.' },
+      { name: 'Aerolase', desc: 'Gentle 650-microsecond laser for acne, rosacea, facial veins, and melasma — safe for all skin types.' },
     ],
   },
 ];
 
-import { Sparkles, Gem, Trophy, Calendar, MapPin } from 'lucide-react';
+const SERVICE_ICONS: Record<string, React.ReactNode> = {
+  'Hydrafacial MD': <Droplets className="w-5 h-5" />,
+  'Glo2 Facial System': <Sun className="w-5 h-5" />,
+  'Microneedling (RF / SkinPen)': <Zap className="w-5 h-5" />,
+  'Aerolase': <Microscope className="w-5 h-5" />,
+  'VI Precision Plus Peels': <Sparkles className="w-5 h-5" />,
+  'BioRePeel': <Droplets className="w-5 h-5" />,
+  'PRX T33 Peel': <Star className="w-5 h-5" />,
+  'Chemical Peels': <Sparkles className="w-5 h-5" />,
+  'Dermaplaning': <Zap className="w-5 h-5" />,
+  'Acne Treatment': <Heart className="w-5 h-5" />,
+  "Men's Grooming Facial": <Star className="w-5 h-5" />,
+  'Luxury Facials': <Gem className="w-5 h-5" />,
+  'Customized Facials': <Heart className="w-5 h-5" />,
+};
+
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
@@ -56,7 +71,6 @@ function useInView(threshold = 0.15) {
   return { ref, inView };
 }
 
-// ── Animated Section Wrapper ──
 function RevealSection({ children, className = '', delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const { ref, inView } = useInView(0.1);
   return (
@@ -67,7 +81,7 @@ function RevealSection({ children, className = '', delay = 0 }: { children: Reac
 }
 
 export default function Home() {
-  const [activeCategory, setActiveCategory] = useState('injectables');
+  const [activeCategory, setActiveCategory] = useState('signature');
   const [expandedService, setExpandedService] = useState<string | null>(null);
 
   const activeItems = SERVICE_CATEGORIES.find(c => c.id === activeCategory)?.items || [];
@@ -80,7 +94,6 @@ export default function Home() {
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0">
             <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black" />
-            {/* Real background image */}
             <img src="/images/hero/skin-bg.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-40" />
             <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-gold/[0.06] blur-[120px]" />
             <div className="absolute bottom-0 left-0 right-0 h-px lake-shimmer" />
@@ -127,20 +140,45 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ── Treatment Banner ── */}
+        <section className="relative py-16 px-6 overflow-hidden">
+          <div className="absolute inset-0">
+            <img src="/images/hero/treatment-wide-1.png" alt="" className="w-full h-full object-cover opacity-20 grayscale" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black" />
+          </div>
+          <div className="relative z-10 max-w-6xl mx-auto grid md:grid-cols-3 gap-8 text-center">
+            {[
+              { num: '18+', label: 'Years Experience' },
+              { num: '5,000+', label: 'Treatments Performed' },
+              { num: '#1', label: 'Best of the Lake 2026' },
+            ].map((stat, i) => (
+              <RevealSection key={stat.label} delay={i * 150}>
+                <div className="p-6">
+                  <p className="text-4xl md:text-5xl font-light text-gold mb-2">{stat.num}</p>
+                  <p className="text-xs tracking-[0.2em] text-gray-400 uppercase">{stat.label}</p>
+                </div>
+              </RevealSection>
+            ))}
+          </div>
+        </section>
+
+        {/* ── Divider ── */}
+        <div className="max-w-6xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" /></div>
+
         {/* ── Hydrafacial Feature ── */}
-        <section id="aerolase" className="py-24 px-6">
+        <section className="py-24 px-6">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <RevealSection>
                 <div className="relative aspect-[4/3] bg-charcoal rounded-lg overflow-hidden border border-white/5 group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent group-hover:from-gold/10 transition-all duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-gold/5 via-transparent to-gold/5 group-hover:from-gold/10 group-hover:to-gold/10 transition-all duration-700" />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center">
                       <div className="w-20 h-20 mx-auto mb-4 rounded-full border border-gold/30 flex items-center justify-center group-hover:border-gold group-hover:scale-110 transition-all duration-500">
-                        <Gem className="text-gold w-8 h-8" />
+                        <Droplets className="text-gold w-8 h-8" />
                       </div>
                       <p className="text-xs text-gray-500 tracking-[0.2em] uppercase">Hydrafacial MD</p>
-                      <p className="text-[10px] text-gray-600 mt-1">600 × 450</p>
+                      <p className="text-[10px] text-gray-600 mt-1">Signature Treatment</p>
                     </div>
                   </div>
                 </div>
@@ -149,12 +187,12 @@ export default function Home() {
               <RevealSection delay={200}>
                 <div>
                   <span className="text-[10px] tracking-[0.25em] text-gold uppercase font-medium">Featured Treatment</span>
-                  <h2 className="text-3xl md:text-4xl font-serif mt-3 mb-6">Hydrafacial MD <Sparkles className="inline w-6 h-6 text-gold" /></h2>
+                  <h2 className="text-3xl md:text-4xl font-serif mt-3 mb-6">Hydrafacial MD</h2>
                   <p className="text-gray-400 leading-relaxed mb-6">
                     The <strong className="text-white">Hydrafacial MD</strong> is a multi-step treatment that cleanses, exfoliates, extracts, and hydrates — all in one session. Suitable for <strong className="text-white">every skin type</strong>, it delivers instant, visible results with zero downtime.
                   </p>
                   <div className="space-y-3 mb-8">
-                    {["Deep Cleansing & Exfoliation", "Painless Extraction", "Intense Hydration & Infusion", "Instant Glow, Zero Downtime"].map((t, i) => (
+                    {["Deep Cleansing & Exfoliation", "Painless Extraction", "Intense Hydration & Infusion", "Instant Glow, Zero Downtime"].map((t) => (
                       <div key={t} className="flex items-center gap-3 group cursor-default">
                         <span className="w-1.5 h-1.5 rounded-full bg-gold group-hover:w-3 group-hover:bg-gold transition-all duration-300" />
                         <span className="text-sm text-gray-300 group-hover:text-white transition-colors">{t}</span>
@@ -173,7 +211,7 @@ export default function Home() {
         {/* ── Divider ── */}
         <div className="max-w-6xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" /></div>
 
-        {/* ── Services — Interactive Tabs ── */}
+        {/* ── Services — Visual Grid + Detail ── */}
         <section id="services" className="py-24 px-6">
           <div className="max-w-6xl mx-auto">
             <RevealSection>
@@ -185,60 +223,99 @@ export default function Home() {
 
             {/* Category Tabs */}
             <RevealSection delay={100}>
-              <div className="flex flex-wrap justify-center gap-2 mb-10">
+              <div className="flex flex-wrap justify-center gap-3 mb-12">
                 {SERVICE_CATEGORIES.map((cat) => (
                   <button
                     key={cat.id}
                     onClick={() => { setActiveCategory(cat.id); setExpandedService(null); }}
-                    className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-xs tracking-[0.1em] uppercase transition-all duration-300 border ${
+                    className={`flex items-center gap-2 px-6 py-3 rounded-full text-xs tracking-[0.12em] uppercase transition-all duration-300 border ${
                       activeCategory === cat.id
-                        ? 'bg-gold text-black border-gold'
+                        ? 'bg-gold text-black border-gold font-medium'
                         : 'border-white/10 text-gray-400 hover:border-gold/40 hover:text-gold'
                     }`}
                   >
-                    <cat.icon className="w-3.5 h-3.5" />
+                    <cat.icon className="w-4 h-4" />
                     <span>{cat.label}</span>
                   </button>
                 ))}
               </div>
             </RevealSection>
 
-            {/* Service Items — Accordion */}
-            <div className="max-w-3xl mx-auto">
+            {/* Service Cards Grid */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
               {activeItems.map((service, i) => (
-                <div
-                  key={`${activeCategory}-${service.name}`}
-                  className="border-b border-white/5 transition-all duration-500"
-                  style={{ animationDelay: `${i * 75}ms` }}
-                >
+                <RevealSection key={`${activeCategory}-${service.name}`} delay={i * 60}>
                   <button
                     onClick={() => setExpandedService(expandedService === service.name ? null : service.name)}
-                    className="w-full flex items-center justify-between py-4 group"
+                    className={`w-full text-left p-5 rounded-lg border transition-all duration-300 group ${
+                      expandedService === service.name
+                        ? 'bg-gold/10 border-gold/40'
+                        : 'bg-charcoal/50 border-white/5 hover:border-gold/20'
+                    }`}
                   >
-                    <div className="flex items-center gap-3">
-                      <span className={`w-1 h-1 rounded-full transition-all duration-300 ${expandedService === service.name ? 'bg-gold w-2 h-2' : 'bg-gray-600 group-hover:bg-gold'}`} />
-                      <span className={`text-sm font-medium transition-colors duration-300 ${expandedService === service.name ? 'text-gold' : 'text-white group-hover:text-gold'}`}>
-                        {service.name}
-                      </span>
-                      {'featured' in service && service.featured && (
-                        <span className="text-[9px] px-2 py-0.5 rounded-full bg-gold/10 text-gold border border-gold/20 tracking-[0.1em] uppercase">Featured</span>
-                      )}
+                    <div className="flex items-start gap-3 mb-2">
+                      <div className={`w-10 h-10 rounded-full border flex items-center justify-center shrink-0 transition-all duration-300 ${
+                        expandedService === service.name
+                          ? 'border-gold bg-gold/10 text-gold'
+                          : 'border-white/10 group-hover:border-gold/40 text-gray-500 group-hover:text-gold'
+                      }`}>
+                        {SERVICE_ICONS[service.name] || <Sparkles className="w-5 h-5" />}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <h3 className={`text-sm font-medium transition-colors ${
+                            expandedService === service.name ? 'text-gold' : 'text-white group-hover:text-gold'
+                          }`}>{service.name}</h3>
+                          {'featured' in service && service.featured && (
+                            <span className="text-[8px] px-2 py-0.5 rounded-full bg-gold/10 text-gold border border-gold/20 tracking-[0.1em] uppercase shrink-0">Featured</span>
+                          )}
+                        </div>
+                        <p className={`text-xs leading-relaxed mt-1.5 transition-all duration-300 ${
+                          expandedService === service.name ? 'text-gray-300 max-h-20 opacity-100' : 'text-gray-500 max-h-0 opacity-0 overflow-hidden'
+                        }`}>{service.desc}</p>
+                      </div>
                     </div>
-                    <svg className={`w-4 h-4 text-gray-500 transition-transform duration-300 ${expandedService === service.name ? 'rotate-180 text-gold' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
-                    </svg>
                   </button>
-                  <div className={`overflow-hidden transition-all duration-300 ${expandedService === service.name ? 'max-h-20 opacity-100 pb-4' : 'max-h-0 opacity-0'}`}>
-                    <p className="text-xs text-gray-400 pl-5 leading-relaxed">{service.desc}</p>
-                  </div>
-                </div>
+                </RevealSection>
               ))}
             </div>
 
-            <div className="mt-10 text-center">
+            <div className="mt-8 text-center">
               <a href="#book" className="inline-block px-8 py-3 bg-gold text-black text-sm font-medium tracking-[0.15em] uppercase hover:bg-gold-light transition-all duration-300 hover:shadow-lg hover:shadow-gold/20">
                 Book Your Treatment
               </a>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Divider ── */}
+        <div className="max-w-6xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" /></div>
+
+        {/* ── Gallery ── */}
+        <section className="py-24 px-6">
+          <div className="max-w-6xl mx-auto">
+            <RevealSection>
+              <div className="text-center mb-12">
+                <span className="text-[10px] tracking-[0.25em] text-gold uppercase font-medium">The Lake</span>
+                <h2 className="text-3xl md:text-4xl font-serif mt-3">Our Home</h2>
+              </div>
+            </RevealSection>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+              {[
+                { src: '/images/gallery/lake-sunset.jpg', span: 'md:col-span-2' },
+                { src: '/images/gallery/lake-aerial-1.jpg', span: '' },
+                { src: '/images/gallery/marina.jpg', span: '' },
+                { src: '/images/gallery/lake-aerial-2.jpg', span: '' },
+                { src: '/images/gallery/cove.jpg', span: 'md:col-span-2' },
+              ].map((img, i) => (
+                <RevealSection key={i} delay={i * 100} className={img.span}>
+                  <div className="relative aspect-[4/3] rounded-lg overflow-hidden border border-white/5 group hover:border-gold/20 transition-all duration-500">
+                    <img src={img.src} alt="" className="w-full h-full object-cover opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  </div>
+                </RevealSection>
+              ))}
             </div>
           </div>
         </section>
@@ -254,9 +331,8 @@ export default function Home() {
                 <div>
                   <span className="text-[10px] tracking-[0.25em] text-gold uppercase font-medium">Your Aesthetician</span>
                   <h2 className="text-3xl md:text-4xl font-serif mt-3 mb-6">Miriah Adams</h2>
-                  {/* Real photo of Miriah */}
-                  <div className="relative w-48 h-48 mx-auto md:mx-0 mb-6 rounded-full overflow-hidden border-2 border-gold/30">
-                    <img src="/images/about/miriah.jpg" alt="Miriah Adams - The Ozark Aesthetician" className="w-full h-full object-cover" />
+                  <div className="relative w-52 h-52 mx-auto md:mx-0 mb-8 rounded-full overflow-hidden border-2 border-gold/30">
+                    <img src="/images/about/miriah-portrait.png" alt="Miriah Adams" className="w-full h-full object-cover" />
                   </div>
                   <p className="text-gray-400 leading-relaxed mb-6">
                     With over <strong className="text-white">18 years</strong> in the aesthetics industry, Miriah brings unparalleled expertise to every treatment. Recognized as the <strong className="text-gold">Best Aesthetician</strong>{' '}by Lake Lifestyles Magazine&apos;s Best of the Lake 2026, she combines advanced clinical knowledge with a personalized approach to deliver real results.
@@ -269,10 +345,9 @@ export default function Home() {
 
               <RevealSection delay={200}>
                 <div>
-                  {/* Lake background accent */}
                   <div className="relative rounded-lg overflow-hidden mb-6 border border-white/5">
-                    <img src="/images/hero/lake-bg.jpg" alt="Lake of the Ozarks" className="w-full h-48 object-cover opacity-70" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+                    <img src="/images/hero/treatment-wide-2.png" alt="" className="w-full h-56 object-cover opacity-60 grayscale" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                     <div className="absolute bottom-3 left-4">
                       <p className="text-xs text-gold tracking-[0.2em] uppercase">Lake of the Ozarks</p>
                       <p className="text-[10px] text-gray-400">Camdenton, Missouri</p>
@@ -295,9 +370,9 @@ export default function Home() {
                   <div className="p-6 bg-charcoal/50 border border-white/5 rounded-lg">
                     <h4 className="text-xs tracking-[0.2em] text-gold uppercase mb-4">Credentials</h4>
                     <div className="space-y-3">
-                      {CREDENTIALS.map((cred, i) => (
+                      {CREDENTIALS.map((cred) => (
                         <div key={cred} className="flex items-center gap-3 group">
-                          <span className="w-1 h-1 rounded-full bg-gold shrink-0 transition-all duration-300 group-hover:w-2 group-hover:h-2" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 transition-all duration-300 group-hover:w-2.5 group-hover:h-2.5" />
                           <span className="text-sm text-gray-300 group-hover:text-white transition-colors">{cred}</span>
                         </div>
                       ))}
@@ -330,8 +405,8 @@ export default function Home() {
                     <Calendar className="w-8 h-8 text-gold" />
                   </div>
                   <p className="text-sm text-gray-400 mb-2">Vagaro Booking Widget</p>
-                  <p className="text-xs text-gray-600">Replace this placeholder with your Vagaro embed code</p>
-                  <p className="text-[10px] text-gray-700 mt-2">Embed URL: https://www.vagaro.com/theozarkaesthetician</p>
+                  <p className="text-xs text-gray-600">Replace this placeholder with the Vagaro embed code</p>
+                  <p className="text-[10px] text-gray-700 mt-2">https://www.vagaro.com/theozarkaesthetician</p>
                 </div>
               </div>
             </RevealSection>
