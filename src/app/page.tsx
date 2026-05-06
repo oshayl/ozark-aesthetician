@@ -94,7 +94,7 @@ export default function Home() {
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0">
             <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black" />
-            <img src="/images/hero/feature-wide-2.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-40" />
+            <img src="/images/hero/skin-bg.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-40" />
             <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-gold/[0.06] blur-[120px]" />
             <div className="absolute bottom-0 left-0 right-0 h-px lake-shimmer" />
           </div>
@@ -298,7 +298,7 @@ export default function Home() {
               <RevealSection delay={200}>
                 <div>
                   <div className="relative rounded-lg overflow-hidden mb-6 border border-white/5">
-                    <img src="/images/hero/skin-bg.jpg" alt="" className="w-full h-48 object-cover opacity-70" />
+                    <img src="/images/hero/feature-wide-2.jpg" alt="" className="w-full h-48 object-cover opacity-70" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                     <div className="absolute bottom-3 left-4">
                       <p className="text-xs text-gold tracking-[0.2em] uppercase">Lake of the Ozarks</p>
