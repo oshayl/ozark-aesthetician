@@ -144,8 +144,11 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" /></div>
 
         {/* ── Hydrafacial Feature ── */}
-        <section className="py-24 px-6">
-          <div className="max-w-6xl mx-auto">
+        <section className="py-24 px-6 relative overflow-hidden">
+          <div className="absolute inset-0">
+            <img src="/images/hero/treatment-1.jpg" alt="" className="w-full h-full object-cover opacity-[0.08] grayscale" />
+          </div>
+          <div className="relative z-10 max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <RevealSection>
                 <div className="relative aspect-[4/3] bg-charcoal rounded-lg overflow-hidden border border-white/5 group">
@@ -190,8 +193,11 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" /></div>
 
         {/* ── Services — Visual Grid + Detail ── */}
-        <section id="services" className="py-24 px-6">
-          <div className="max-w-6xl mx-auto">
+        <section id="services" className="py-24 px-6 relative overflow-hidden">
+          <div className="absolute inset-0">
+            <img src="/images/hero/treatment-2.jpg" alt="" className="w-full h-full object-cover opacity-[0.06] grayscale" />
+          </div>
+          <div className="relative z-10 max-w-6xl mx-auto">
             <RevealSection>
               <div className="text-center mb-12">
                 <span className="text-[10px] tracking-[0.25em] text-gold uppercase font-medium">What We Offer</span>
@@ -278,7 +284,7 @@ export default function Home() {
                   <span className="text-[10px] tracking-[0.25em] text-gold uppercase font-medium">Your Aesthetician</span>
                   <h2 className="text-3xl md:text-4xl font-serif mt-3 mb-6">Miriah Adams</h2>
                   <div className="relative w-52 h-52 mx-auto md:mx-0 mb-8 rounded-full overflow-hidden border-2 border-gold/30">
-                    <img src="/images/about/miriah-portrait.png" alt="Miriah Adams" className="w-full h-full object-cover" />
+                    <img src="/images/about/miriah-portrait.jpg" alt="Miriah Adams" className="w-full h-full object-cover" />
                   </div>
                   <p className="text-gray-400 leading-relaxed mb-6">
                     With over <strong className="text-white">18 years</strong> in the aesthetics industry, Miriah brings unparalleled expertise to every treatment. Recognized as the <strong className="text-gold">Best Aesthetician</strong>{' '}by Lake Lifestyles Magazine&apos;s Best of the Lake 2026, she combines advanced clinical knowledge with a personalized approach to deliver real results.
@@ -292,7 +298,7 @@ export default function Home() {
               <RevealSection delay={200}>
                 <div>
                   <div className="relative rounded-lg overflow-hidden mb-6 border border-white/5">
-                    <img src="/images/hero/lake-bg.jpg" alt="Lake of the Ozarks" className="w-full h-48 object-cover opacity-70" />
+                    <img src="/images/hero/feature-wide-2.jpg" alt="" className="w-full h-48 object-cover opacity-70" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                     <div className="absolute bottom-3 left-4">
                       <p className="text-xs text-gold tracking-[0.2em] uppercase">Lake of the Ozarks</p>
@@ -334,8 +340,11 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" /></div>
 
         {/* ── Book Appointment ── */}
-        <section id="book" className="py-24 px-6">
-          <div className="max-w-4xl mx-auto text-center">
+        <section id="book" className="py-24 px-6 relative overflow-hidden">
+          <div className="absolute inset-0">
+            <img src="/images/hero/feature-wide-1.jpg" alt="" className="w-full h-full object-cover opacity-[0.07] grayscale" />
+          </div>
+          <div className="relative z-10 max-w-4xl mx-auto text-center">
             <RevealSection>
               <span className="text-[10px] tracking-[0.25em] text-gold uppercase font-medium">Ready?</span>
               <h2 className="text-3xl md:text-4xl font-serif mt-3 mb-4">Book Your Appointment</h2>
@@ -364,8 +373,11 @@ export default function Home() {
         </section>
 
         {/* ── Contact ── */}
-        <section id="contact" className="py-24 px-6 bg-charcoal/30">
-          <div className="max-w-6xl mx-auto">
+        <section id="contact" className="py-24 px-6 relative overflow-hidden">
+          <div className="absolute inset-0">
+            <img src="/images/hero/treatment-3.jpg" alt="" className="w-full h-full object-cover opacity-[0.06] grayscale" />
+          </div>
+          <div className="relative z-10 max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12">
               <RevealSection>
                 <div>
