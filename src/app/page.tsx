@@ -140,28 +140,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── Treatment Banner ── */}
-        <section className="relative py-16 px-6 overflow-hidden">
-          <div className="absolute inset-0">
-            <img src="/images/hero/treatment-wide-1.png" alt="" className="w-full h-full object-cover opacity-20 grayscale" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black" />
-          </div>
-          <div className="relative z-10 max-w-6xl mx-auto grid md:grid-cols-3 gap-8 text-center">
-            {[
-              { num: '18+', label: 'Years Experience' },
-              { num: '5,000+', label: 'Treatments Performed' },
-              { num: '#1', label: 'Best of the Lake 2026' },
-            ].map((stat, i) => (
-              <RevealSection key={stat.label} delay={i * 150}>
-                <div className="p-6">
-                  <p className="text-4xl md:text-5xl font-light text-gold mb-2">{stat.num}</p>
-                  <p className="text-xs tracking-[0.2em] text-gray-400 uppercase">{stat.label}</p>
-                </div>
-              </RevealSection>
-            ))}
-          </div>
-        </section>
-
         {/* ── Divider ── */}
         <div className="max-w-6xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" /></div>
 
@@ -291,38 +269,6 @@ export default function Home() {
         {/* ── Divider ── */}
         <div className="max-w-6xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" /></div>
 
-        {/* ── Gallery ── */}
-        <section className="py-24 px-6">
-          <div className="max-w-6xl mx-auto">
-            <RevealSection>
-              <div className="text-center mb-12">
-                <span className="text-[10px] tracking-[0.25em] text-gold uppercase font-medium">The Lake</span>
-                <h2 className="text-3xl md:text-4xl font-serif mt-3">Our Home</h2>
-              </div>
-            </RevealSection>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              {[
-                { src: '/images/gallery/lake-sunset.jpg', span: 'md:col-span-2' },
-                { src: '/images/gallery/lake-aerial-1.jpg', span: '' },
-                { src: '/images/gallery/marina.jpg', span: '' },
-                { src: '/images/gallery/lake-aerial-2.jpg', span: '' },
-                { src: '/images/gallery/cove.jpg', span: 'md:col-span-2' },
-              ].map((img, i) => (
-                <RevealSection key={i} delay={i * 100} className={img.span}>
-                  <div className="relative aspect-[4/3] rounded-lg overflow-hidden border border-white/5 group hover:border-gold/20 transition-all duration-500">
-                    <img src={img.src} alt="" className="w-full h-full object-cover opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                  </div>
-                </RevealSection>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── Divider ── */}
-        <div className="max-w-6xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" /></div>
-
         {/* ── About / Credentials ── */}
         <section id="about" className="py-24 px-6">
           <div className="max-w-6xl mx-auto">
@@ -346,7 +292,7 @@ export default function Home() {
               <RevealSection delay={200}>
                 <div>
                   <div className="relative rounded-lg overflow-hidden mb-6 border border-white/5">
-                    <img src="/images/hero/treatment-wide-2.png" alt="" className="w-full h-56 object-cover opacity-60 grayscale" />
+                    <img src="/images/hero/lake-bg.jpg" alt="Lake of the Ozarks" className="w-full h-48 object-cover opacity-70" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                     <div className="absolute bottom-3 left-4">
                       <p className="text-xs text-gold tracking-[0.2em] uppercase">Lake of the Ozarks</p>
