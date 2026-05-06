@@ -94,7 +94,7 @@ export default function Home() {
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0">
             <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black" />
-            <img src="/images/hero/skin-bg.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-40" />
+            <img src="/images/hero/wide-2.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-40" />
             <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-gold/[0.06] blur-[120px]" />
             <div className="absolute bottom-0 left-0 right-0 h-px lake-shimmer" />
           </div>
@@ -146,7 +146,7 @@ export default function Home() {
         {/* ── Hydrafacial Feature ── */}
         <section className="py-24 px-6 relative overflow-hidden">
           <div className="absolute inset-0">
-            <img src="/images/hero/treatment-1.jpg" alt="" className="w-full h-full object-cover opacity-[0.08] grayscale" />
+            <img src="/images/hero/landscape-1.jpg" alt="" className="w-full h-full object-cover opacity-[0.08] grayscale" />
           </div>
           <div className="relative z-10 max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -195,7 +195,7 @@ export default function Home() {
         {/* ── Services — Visual Grid + Detail ── */}
         <section id="services" className="py-24 px-6 relative overflow-hidden">
           <div className="absolute inset-0">
-            <img src="/images/hero/treatment-2.jpg" alt="" className="w-full h-full object-cover opacity-[0.06] grayscale" />
+            <img src="/images/hero/landscape-2.jpg" alt="" className="w-full h-full object-cover opacity-[0.06] grayscale" />
           </div>
           <div className="relative z-10 max-w-6xl mx-auto">
             <RevealSection>
@@ -284,7 +284,7 @@ export default function Home() {
                   <span className="text-[10px] tracking-[0.25em] text-gold uppercase font-medium">Your Aesthetician</span>
                   <h2 className="text-3xl md:text-4xl font-serif mt-3 mb-6">Miriah Adams</h2>
                   <div className="relative w-52 h-52 mx-auto md:mx-0 mb-8 rounded-full overflow-hidden border-2 border-gold/30">
-                    <img src="/images/about/miriah-circle.jpg" alt="Miriah Adams" className="w-full h-full object-cover" />
+                    <img src="/images/about/miriah.jpg" alt="Miriah Adams" className="w-full h-full object-cover" />
                   </div>
                   <p className="text-gray-400 leading-relaxed mb-6">
                     With over <strong className="text-white">18 years</strong> in the aesthetics industry, Miriah brings unparalleled expertise to every treatment. Recognized as the <strong className="text-gold">Best Aesthetician</strong>{' '}by Lake Lifestyles Magazine&apos;s Best of the Lake 2026, she combines advanced clinical knowledge with a personalized approach to deliver real results.
@@ -298,7 +298,7 @@ export default function Home() {
               <RevealSection delay={200}>
                 <div>
                   <div className="relative rounded-lg overflow-hidden mb-6 border border-white/5">
-                    <img src="/images/about/miriah-studio.jpg" alt="Inside the studio" className="w-full h-48 object-cover opacity-70" />
+                    <img src="/images/hero/landscape-3.jpg" alt="Inside the studio" className="w-full h-48 object-cover opacity-70" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                     <div className="absolute bottom-3 left-4">
                       <p className="text-xs text-gold tracking-[0.2em] uppercase">The Studio</p>
@@ -342,7 +342,7 @@ export default function Home() {
         {/* ── Book Appointment ── */}
         <section id="book" className="py-24 px-6 relative overflow-hidden">
           <div className="absolute inset-0">
-            <img src="/images/hero/feature-wide-1.jpg" alt="" className="w-full h-full object-cover opacity-[0.07] grayscale" />
+            <img src="/images/hero/wide-1.jpg" alt="" className="w-full h-full object-cover opacity-[0.07] grayscale" />
           </div>
           <div className="relative z-10 max-w-4xl mx-auto text-center">
             <RevealSection>
@@ -375,7 +375,7 @@ export default function Home() {
         {/* ── Contact ── */}
         <section id="contact" className="py-24 px-6 relative overflow-hidden">
           <div className="absolute inset-0">
-            <img src="/images/hero/treatment-3.jpg" alt="" className="w-full h-full object-cover opacity-[0.06] grayscale" />
+            <img src="/images/hero/landscape-3.jpg" alt="" className="w-full h-full object-cover opacity-[0.06] grayscale" />
           </div>
           <div className="relative z-10 max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12">
