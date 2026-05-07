@@ -94,7 +94,7 @@ export default function Home() {
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0">
             <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black" />
-            <img src="/images/hero/wide-2.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-40" />
+            <img src="/images/hero/skin.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-40" />
             <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-gold/[0.06] blur-[120px]" />
             <div className="absolute bottom-0 left-0 right-0 h-px lake-shimmer" />
           </div>
