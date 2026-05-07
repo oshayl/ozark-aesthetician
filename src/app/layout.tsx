@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "The Ozark Aesthetician | Advanced Skincare, Hydrafacial & Injectables at the Lake",
-  description: "Lake of the Ozarks' premier aesthetician. 18+ years of expertise in Hydrafacial, microneedling, chemical peels, injectables, and customized skincare. Best of the Lake 2026 winner.",
-  keywords: "aesthetician, hydrafacial, microneedling, botox, chemical peel, lake of the ozarks, camdenton, skincare, acne treatment, facial",
+  title: "The Ozark Aesthetician | Advanced Skincare & Hydrafacial at the Lake",
+  description: "Lake of the Ozarks' premier aesthetician. 18+ years of expertise in Hydrafacial, microneedling, chemical peels, and customized skincare. Best of the Lake 2026 winner.",
+  keywords: "aesthetician, hydrafacial, microneedling, chemical peel, lake of the ozarks, camdenton, skincare, acne treatment, facial, laser specialist",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

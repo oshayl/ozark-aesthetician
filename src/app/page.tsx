@@ -146,21 +146,17 @@ export default function Home() {
         {/* ── Hydrafacial Feature ── */}
         <section className="py-24 px-6 relative overflow-hidden">
           <div className="absolute inset-0">
-            <img src="/images/hero/landscape-1.jpg" alt="" className="w-full h-full object-cover opacity-[0.08] grayscale" />
+            <img src="/images/spa/spa-1.png" alt="Inside the spa" className="w-full h-full object-cover opacity-[0.08] grayscale" />
           </div>
           <div className="relative z-10 max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <RevealSection>
                 <div className="relative aspect-[4/3] bg-charcoal rounded-lg overflow-hidden border border-white/5 group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-gold/5 via-transparent to-gold/5 group-hover:from-gold/10 group-hover:to-gold/10 transition-all duration-700" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-20 h-20 mx-auto mb-4 rounded-full border border-gold/30 flex items-center justify-center group-hover:border-gold group-hover:scale-110 transition-all duration-500">
-                        <Droplets className="text-gold w-8 h-8" />
-                      </div>
-                      <p className="text-xs text-gray-500 tracking-[0.2em] uppercase">Hydrafacial MD</p>
-                      <p className="text-[10px] text-gray-600 mt-1">Signature Treatment</p>
-                    </div>
+                  <img src="/images/spa/spa-1.png" alt="Hydrafacial treatment room" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute bottom-4 left-4">
+                    <p className="text-xs text-gold tracking-[0.2em] uppercase font-medium">Hydrafacial MD</p>
+                    <p className="text-[10px] text-gray-300">Signature Treatment</p>
                   </div>
                 </div>
               </RevealSection>
@@ -195,7 +191,7 @@ export default function Home() {
         {/* ── Services — Visual Grid + Detail ── */}
         <section id="services" className="py-24 px-6 relative overflow-hidden">
           <div className="absolute inset-0">
-            <img src="/images/hero/landscape-2.jpg" alt="" className="w-full h-full object-cover opacity-[0.06] grayscale" />
+            <img src="/images/hero/drone-1.png" alt="" className="w-full h-full object-cover opacity-[0.06] grayscale" />
           </div>
           <div className="relative z-10 max-w-6xl mx-auto">
             <RevealSection>
@@ -284,7 +280,7 @@ export default function Home() {
                   <span className="text-[10px] tracking-[0.25em] text-gold uppercase font-medium">Your Aesthetician</span>
                   <h2 className="text-3xl md:text-4xl font-serif mt-3 mb-6">Miriah Adams</h2>
                   <div className="relative w-52 h-52 mx-auto md:mx-0 mb-8 rounded-full overflow-hidden border-2 border-gold/30">
-                    <img src="/images/about/miriah.jpg" alt="Miriah Adams" className="w-full h-full object-cover" />
+                    <img src="/images/about/miriah-adams.jpg" alt="Miriah Adams" className="w-full h-full object-cover" />
                   </div>
                   <p className="text-gray-400 leading-relaxed mb-6">
                     With over <strong className="text-white">18 years</strong> in the aesthetics industry, Miriah brings unparalleled expertise to every treatment. Recognized as the <strong className="text-gold">Best Aesthetician</strong>{' '}by Lake Lifestyles Magazine&apos;s Best of the Lake 2026, she combines advanced clinical knowledge with a personalized approach to deliver real results.
@@ -298,7 +294,7 @@ export default function Home() {
               <RevealSection delay={200}>
                 <div>
                   <div className="relative rounded-lg overflow-hidden mb-6 border border-white/5">
-                    <img src="/images/hero/landscape-3.jpg" alt="Inside the studio" className="w-full h-48 object-cover opacity-70" />
+                    <img src="/images/spa/building.png" alt="The Ozark Aesthetician studio" className="w-full h-48 object-cover opacity-80" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                     <div className="absolute bottom-3 left-4">
                       <p className="text-xs text-gold tracking-[0.2em] uppercase">The Studio</p>
@@ -342,7 +338,7 @@ export default function Home() {
         {/* ── Book Appointment ── */}
         <section id="book" className="py-24 px-6 relative overflow-hidden">
           <div className="absolute inset-0">
-            <img src="/images/hero/wide-1.jpg" alt="" className="w-full h-full object-cover opacity-[0.07] grayscale" />
+            <img src="/images/hero/drone-2.png" alt="" className="w-full h-full object-cover opacity-[0.07] grayscale" />
           </div>
           <div className="relative z-10 max-w-4xl mx-auto text-center">
             <RevealSection>
@@ -375,7 +371,7 @@ export default function Home() {
         {/* ── Contact ── */}
         <section id="contact" className="py-24 px-6 relative overflow-hidden">
           <div className="absolute inset-0">
-            <img src="/images/hero/landscape-3.jpg" alt="" className="w-full h-full object-cover opacity-[0.06] grayscale" />
+            <img src="/images/hero/lake-of-the-ozarks.png" alt="" className="w-full h-full object-cover opacity-[0.06] grayscale" />
           </div>
           <div className="relative z-10 max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12">
@@ -401,12 +397,17 @@ export default function Home() {
                 </div>
               </RevealSection>
               <RevealSection delay={200}>
-                <div className="bg-charcoal border border-white/5 rounded-lg overflow-hidden min-h-[300px] flex items-center justify-center hover:border-gold/20 transition-all duration-300">
-                  <div className="text-center">
-                    <MapPin className="w-8 h-8 text-gold" />
-                    <p className="text-xs text-gray-400">Google Maps Embed</p>
-                    <p className="text-[10px] text-gray-600 mt-1">1000 US-54, Camdenton, MO 65020</p>
-                  </div>
+                <div className="rounded-lg overflow-hidden min-h-[300px] border border-white/5 hover:border-gold/20 transition-all duration-300">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3160!2d-92.7936!3d38.0085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87c4e4b5e1a8e4b3%3A0x123456789abcdef!2s1000+US-54%2C+Camdenton%2C+MO+65020!5e0!3m2!1sen!2sus!4v1700000000000"
+                    width="100%"
+                    height="300"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="The Ozark Aesthetician location"
+                  />
                 </div>
               </RevealSection>
             </div>
