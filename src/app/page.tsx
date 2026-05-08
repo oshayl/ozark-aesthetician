@@ -168,7 +168,7 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-16 items-center mb-20">
               <RevealSection>
                 <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-white/[0.06] group">
-                  <img src="/images/spa/spa-1.png" alt="Hydrafacial MD treatment" className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700" />
+                  <img src="/images/spa/hydrafacial.png" alt="Hydrafacial MD treatment" className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                   {/* Glass overlay label */}
                   <div className="absolute bottom-5 left-5 right-5 backdrop-blur-md bg-black/30 rounded-lg border border-white/10 px-4 py-3">
