@@ -42,21 +42,7 @@ const SERVICE_CATEGORIES = [
   },
 ];
 
-const SERVICE_ICONS: Record<string, React.ReactNode> = {
-  'Hydrafacial MD': <Droplets className="w-5 h-5" />,
-  'Glo2 Facial System': <Sun className="w-5 h-5" />,
-  'Microneedling (RF / SkinPen)': <Zap className="w-5 h-5" />,
-  'Aerolase': <Microscope className="w-5 h-5" />,
-  'VI Precision Plus Peels': <Sparkles className="w-5 h-5" />,
-  'BioRePeel': <Droplets className="w-5 h-5" />,
-  'PRX T33 Peel': <Star className="w-5 h-5" />,
-  'Chemical Peels': <Sparkles className="w-5 h-5" />,
-  'Dermaplaning': <Zap className="w-5 h-5" />,
-  'Acne Treatment': <Heart className="w-5 h-5" />,
-  "Men's Grooming Facial": <Star className="w-5 h-5" />,
-  'Luxury Facials': <Gem className="w-5 h-5" />,
-  'Customized Facials': <Heart className="w-5 h-5" />,
-};
+
 
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
@@ -81,10 +67,7 @@ function RevealSection({ children, className = '', delay = 0 }: { children: Reac
 }
 
 export default function Home() {
-  const [activeCategory, setActiveCategory] = useState('signature');
-  const [expandedService, setExpandedService] = useState<string | null>(null);
 
-  const activeItems = SERVICE_CATEGORIES.find(c => c.id === activeCategory)?.items || [];
 
   return (
     <>
@@ -233,80 +216,71 @@ export default function Home() {
         {/* ── Services — Visual Grid + Detail ── */}
         <section id="services" className="py-24 px-6 relative overflow-hidden">
           <div className="absolute inset-0">
-            <img src="/images/hero/drone-1.png" alt="" className="w-full h-full object-cover opacity-[0.06] grayscale" />
+            <img src="/images/hero/drone-1.png" alt="" className="w-full h-full object-cover opacity-[0.04] grayscale" />
           </div>
-          <div className="relative z-10 max-w-6xl mx-auto">
+          <div className="relative z-10 max-w-4xl mx-auto">
             <RevealSection>
-              <div className="text-center mb-12">
+              <div className="text-center mb-16">
                 <span className="text-[10px] tracking-[0.25em] text-gold uppercase font-medium">What We Offer</span>
                 <h2 className="text-3xl md:text-4xl font-serif mt-3">Our Services</h2>
               </div>
             </RevealSection>
 
-            {/* Category Tabs */}
+            {/* Signature Treatments */}
             <RevealSection delay={100}>
-              <div className="flex flex-wrap justify-center gap-3 mb-12">
-                {SERVICE_CATEGORIES.map((cat) => (
-                  <button
-                    key={cat.id}
-                    onClick={() => { setActiveCategory(cat.id); setExpandedService(null); }}
-                    className={`flex items-center gap-2 px-6 py-3 rounded-full text-xs tracking-[0.12em] uppercase transition-all duration-300 border ${
-                      activeCategory === cat.id
-                        ? 'bg-gold text-black border-gold font-medium'
-                        : 'border-white/10 text-gray-400 hover:border-gold/40 hover:text-gold'
-                    }`}
-                  >
-                    <cat.icon className="w-4 h-4" />
-                    <span>{cat.label}</span>
-                  </button>
-                ))}
+              <div className="mb-14">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-8 h-px bg-gold" />
+                  <span className="text-[10px] tracking-[0.2em] text-gold uppercase font-medium">Signature Treatments</span>
+                </div>
+                <div className="space-y-0">
+                  {SERVICE_CATEGORIES.find(c => c.id === 'signature')!.items.map((service, i) => (
+                    <div
+                      key={service.name}
+                      className={`group flex items-center justify-between py-4 border-b border-white/5 transition-all duration-300 hover:border-gold/20 ${'featured' in service && service.featured ? 'relative' : ''}`}
+                    >
+                      <div className="flex items-center gap-4">
+                        <span className="w-1.5 h-1.5 rounded-full bg-gold/40 group-hover:bg-gold transition-colors duration-300 shrink-0" />
+                        <span className="text-base text-white group-hover:text-gold transition-colors duration-300">{service.name}</span>
+                        {'featured' in service && service.featured && (
+                          <span className="text-[8px] px-2 py-0.5 rounded-full bg-gold/10 text-gold border border-gold/20 tracking-[0.1em] uppercase">Featured</span>
+                        )}
+                      </div>
+                      <span className="text-xs text-gray-600 group-hover:text-gold/60 transition-colors duration-300 hidden sm:block">{service.desc}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </RevealSection>
 
-            {/* Service Cards Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-              {activeItems.map((service, i) => (
-                <RevealSection key={`${activeCategory}-${service.name}`} delay={i * 60}>
-                  <button
-                    onClick={() => setExpandedService(expandedService === service.name ? null : service.name)}
-                    className={`w-full text-left p-5 rounded-lg border transition-all duration-300 group ${
-                      expandedService === service.name
-                        ? 'bg-gold/10 border-gold/40'
-                        : 'bg-charcoal/50 border-white/5 hover:border-gold/20'
-                    }`}
-                  >
-                    <div className="flex items-start gap-3 mb-2">
-                      <div className={`w-10 h-10 rounded-full border flex items-center justify-center shrink-0 transition-all duration-300 ${
-                        expandedService === service.name
-                          ? 'border-gold bg-gold/10 text-gold'
-                          : 'border-white/10 group-hover:border-gold/40 text-gray-500 group-hover:text-gold'
-                      }`}>
-                        {SERVICE_ICONS[service.name] || <Sparkles className="w-5 h-5" />}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <h3 className={`text-sm font-medium transition-colors ${
-                            expandedService === service.name ? 'text-gold' : 'text-white group-hover:text-gold'
-                          }`}>{service.name}</h3>
-                          {'featured' in service && service.featured && (
-                            <span className="text-[8px] px-2 py-0.5 rounded-full bg-gold/10 text-gold border border-gold/20 tracking-[0.1em] uppercase shrink-0">Featured</span>
-                          )}
-                        </div>
-                        <p className={`text-xs leading-relaxed mt-1.5 transition-all duration-300 ${
-                          expandedService === service.name ? 'text-gray-300 max-h-20 opacity-100' : 'text-gray-500 max-h-0 opacity-0 overflow-hidden'
-                        }`}>{service.desc}</p>
-                      </div>
+            {/* Skin Treatments */}
+            <RevealSection delay={200}>
+              <div className="mb-14">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-8 h-px bg-gold" />
+                  <span className="text-[10px] tracking-[0.2em] text-gold uppercase font-medium">Skin Treatments</span>
+                </div>
+                <div className="grid md:grid-cols-2 gap-x-12 gap-y-0">
+                  {SERVICE_CATEGORIES.find(c => c.id === 'skin')!.items.map((service, i) => (
+                    <div
+                      key={service.name}
+                      className={`group flex items-center gap-4 py-3.5 border-b border-white/5 hover:border-gold/20 transition-all duration-300 ${i >= Math.ceil(SERVICE_CATEGORIES.find(c => c.id === 'skin')!.items.length / 2) ? 'md:border-l md:border-b md:pl-6' : ''}`}
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold/40 group-hover:bg-gold transition-colors duration-300 shrink-0" />
+                      <span className="text-sm text-white group-hover:text-gold transition-colors duration-300">{service.name}</span>
                     </div>
-                  </button>
-                </RevealSection>
-              ))}
-            </div>
+                  ))}
+                </div>
+              </div>
+            </RevealSection>
 
-            <div className="mt-8 text-center">
-              <a href="#book" className="inline-block px-8 py-3 bg-gold text-black text-sm font-medium tracking-[0.15em] uppercase hover:bg-gold-light transition-all duration-300 hover:shadow-lg hover:shadow-gold/20">
-                Book Your Treatment
-              </a>
-            </div>
+            <RevealSection delay={300}>
+              <div className="text-center mt-4">
+                <a href="#book" className="inline-block px-8 py-3 bg-gold text-black text-sm font-medium tracking-[0.15em] uppercase hover:bg-gold-light transition-all duration-300 hover:shadow-lg hover:shadow-gold/20">
+                  Book Your Treatment
+                </a>
+              </div>
+            </RevealSection>
           </div>
         </section>
 
