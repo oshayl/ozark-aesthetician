@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid md:grid-cols-3 gap-12">
           <div>
-            <img src="/images/logo/logo-white.png" alt="The Ozark Aesthetician" className="h-10 w-auto mb-3" />
+            <img src="/images/logo/logo-white.png" alt="The Ozark Aesthetician" className="h-12 w-auto mb-3" />
             <p className="text-sm text-gray-500 leading-relaxed">
               Advanced clinical aesthetician &amp; laser specialist. Customized treatments. Real results.
             </p>
