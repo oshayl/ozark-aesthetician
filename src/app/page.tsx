@@ -144,44 +144,98 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" /></div>
 
         {/* ── Hydrafacial Feature ── */}
-        <section className="py-24 px-6 relative overflow-hidden">
+        <section className="py-28 px-6 relative overflow-hidden">
           <div className="absolute inset-0">
-            <img src="/images/spa/spa-1.png" alt="Inside the spa" className="w-full h-full object-cover opacity-[0.08] grayscale" />
+            <img src="/images/spa/spa-1.png" alt="" className="w-full h-full object-cover opacity-[0.06] grayscale" />
+            <div className="absolute top-1/4 left-1/3 w-[600px] h-[600px] rounded-full bg-gold/[0.03] blur-[160px]" />
           </div>
-          <div className="relative z-10 max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+
+          <div className="relative z-10 max-w-5xl mx-auto">
+            {/* ── Header ── */}
+            <RevealSection>
+              <div className="text-center mb-16">
+                <span className="inline-block px-4 py-1.5 border border-gold/30 text-gold text-[10px] tracking-[0.25em] uppercase font-medium mb-6">Signature Treatment</span>
+                <h2 className="text-4xl md:text-5xl font-serif mb-4">Hydrafacial MD</h2>
+                <div className="w-16 h-px bg-gold mx-auto mb-6" />
+                <p className="text-gray-400 leading-relaxed max-w-2xl mx-auto">
+                  A non-invasive, results-driven facial that deeply cleanses, exfoliates, extracts impurities, and hydrates — revealing your skin&apos;s natural luminosity in a single session.
+                  <strong className="text-white"> No downtime. Just glow.</strong>
+                </p>
+              </div>
+            </RevealSection>
+
+            {/* ── Image + Key Benefits ── */}
+            <div className="grid md:grid-cols-2 gap-16 items-center mb-20">
               <RevealSection>
-                <div className="relative aspect-[4/3] bg-charcoal rounded-lg overflow-hidden border border-white/5 group">
-                  <img src="/images/spa/spa-1.png" alt="Hydrafacial treatment room" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                  <div className="absolute bottom-4 left-4">
-                    <p className="text-xs text-gold tracking-[0.2em] uppercase font-medium">Hydrafacial MD</p>
-                    <p className="text-[10px] text-gray-300">Signature Treatment</p>
+                <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-white/[0.06] group">
+                  <img src="/images/spa/spa-1.png" alt="Hydrafacial MD treatment" className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                  {/* Glass overlay label */}
+                  <div className="absolute bottom-5 left-5 right-5 backdrop-blur-md bg-black/30 rounded-lg border border-white/10 px-4 py-3">
+                    <p className="text-gold text-xs tracking-[0.2em] uppercase font-medium">Hydrafacial MD</p>
+                    <p className="text-gray-300 text-[11px] mt-0.5">Cleanses · Exfoliates · Extracts · Hydrates</p>
                   </div>
                 </div>
               </RevealSection>
 
               <RevealSection delay={200}>
                 <div>
-                  <span className="text-[10px] tracking-[0.25em] text-gold uppercase font-medium">Featured Treatment</span>
-                  <h2 className="text-3xl md:text-4xl font-serif mt-3 mb-6">Hydrafacial MD</h2>
-                  <p className="text-gray-400 leading-relaxed mb-6">
-                    The <strong className="text-white">Hydrafacial MD</strong> is a multi-step treatment that cleanses, exfoliates, extracts, and hydrates — all in one session. Suitable for <strong className="text-white">every skin type</strong>, it delivers instant, visible results with zero downtime.
-                  </p>
-                  <div className="space-y-3 mb-8">
-                    {["Deep Cleansing & Exfoliation", "Painless Extraction", "Intense Hydration & Infusion", "Instant Glow, Zero Downtime"].map((t) => (
-                      <div key={t} className="flex items-center gap-3 group cursor-default">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gold group-hover:w-3 group-hover:bg-gold transition-all duration-300" />
-                        <span className="text-sm text-gray-300 group-hover:text-white transition-colors">{t}</span>
+                  <span className="text-[10px] tracking-[0.25em] text-gold uppercase font-medium">Key Benefits</span>
+                  <div className="mt-5 space-y-4">
+                    {[
+                      { text: 'Deep cleansing & exfoliation', detail: 'Removes dead skin cells and debris for a fresh, refined surface.' },
+                      { text: 'Hydration & radiant glow', detail: 'Intense moisture infusion leaves skin plump, dewy, and luminous.' },
+                      { text: 'Improves uneven tone & texture', detail: 'Evens out discoloration and smooths rough patches for a polished finish.' },
+                      { text: 'Clears blackheads & congestion', detail: 'Gentle vortex extraction purges pores without irritation.' },
+                      { text: 'Reduces fine lines & wrinkles', detail: 'Plumps and firms with targeted serum delivery.' },
+                      { text: 'Great for acne-prone & dehydrated skin', detail: 'Safe, effective, and customizable for every skin type.' },
+                    ].map((b) => (
+                      <div key={b.text} className="group cursor-default">
+                        <div className="flex items-start gap-3">
+                          <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-gold shrink-0 group-hover:scale-150 transition-transform duration-300" />
+                          <div>
+                            <p className="text-sm text-white font-medium group-hover:text-gold transition-colors duration-300">{b.text}</p>
+                            <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">{b.detail}</p>
+                          </div>
+                        </div>
                       </div>
                     ))}
                   </div>
-                  <a href="#book" className="inline-block px-6 py-2.5 border border-gold text-gold text-xs tracking-[0.15em] uppercase hover:bg-gold hover:text-black transition-all duration-300">
-                    Book Hydrafacial
-                  </a>
                 </div>
               </RevealSection>
             </div>
+
+            {/* ── Perfect For ── */}
+            <RevealSection delay={100}>
+              <div className="text-center mb-8">
+                <span className="text-[10px] tracking-[0.25em] text-gold uppercase font-medium">Perfect For</span>
+              </div>
+            </RevealSection>
+            <RevealSection delay={200}>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+                {[
+                  { icon: '✦', label: 'Dull or tired skin' },
+                  { icon: '✦', label: 'Congested pores' },
+                  { icon: '✦', label: 'Uneven texture' },
+                  { icon: '✦', label: 'Dehydrated skin' },
+                ].map((item) => (
+                  <div key={item.label} className="text-center py-6 px-4 rounded-lg border border-white/[0.06] backdrop-blur-sm bg-white/[0.02] hover:border-gold/20 hover:bg-gold/[0.03] transition-all duration-500 group">
+                    <span className="text-gold text-lg group-hover:scale-110 inline-block transition-transform duration-300">{item.icon}</span>
+                    <p className="text-xs text-gray-400 mt-2 group-hover:text-white transition-colors">{item.label}</p>
+                  </div>
+                ))}
+              </div>
+            </RevealSection>
+
+            {/* ── CTA ── */}
+            <RevealSection delay={300}>
+              <div className="text-center">
+                <p className="text-gray-400 text-sm mb-6 max-w-md mx-auto">Experience the treatment that delivers visible results from the very first session.</p>
+                <a href="#book" className="inline-block px-10 py-4 bg-gold text-black text-sm font-medium tracking-[0.15em] uppercase hover:bg-gold-light hover:shadow-lg hover:shadow-gold/20 transition-all duration-300">
+                  Book Your Hydrafacial
+                </a>
+              </div>
+            </RevealSection>
           </div>
         </section>
 
