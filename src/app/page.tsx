@@ -206,23 +206,11 @@ export default function Home() {
             </div>
 
             {/* ── Perfect For ── */}
-            <RevealSection delay={100}>
-              <div className="text-center mb-8">
-                <span className="text-[10px] tracking-[0.25em] text-gold uppercase font-medium">Perfect For</span>
-              </div>
-            </RevealSection>
             <RevealSection delay={200}>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-                {[
-                  { icon: '✦', label: 'Dull or tired skin' },
-                  { icon: '✦', label: 'Congested pores' },
-                  { icon: '✦', label: 'Uneven texture' },
-                  { icon: '✦', label: 'Dehydrated skin' },
-                ].map((item) => (
-                  <div key={item.label} className="text-center py-6 px-4 rounded-lg border border-white/[0.06] backdrop-blur-sm bg-white/[0.02] hover:border-gold/20 hover:bg-gold/[0.03] transition-all duration-500 group">
-                    <span className="text-gold text-lg group-hover:scale-110 inline-block transition-transform duration-300">{item.icon}</span>
-                    <p className="text-xs text-gray-400 mt-2 group-hover:text-white transition-colors">{item.label}</p>
-                  </div>
+              <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 mb-16">
+                <span className="text-[10px] tracking-[0.25em] text-gold/60 uppercase font-medium mr-2">Perfect for</span>
+                {["Dull or tired skin", "Congested pores", "Uneven texture", "Dehydrated skin"].map((item) => (
+                  <span key={item} className="text-xs text-gray-400 flex items-center gap-1.5"><span className="text-gold/70 text-[8px]">✦</span>{item}</span>
                 ))}
               </div>
             </RevealSection>
