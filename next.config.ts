@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  turbopack: {
+    root: "/Users/rose/ozark-aesthetician",
+  },
 };
 
 export default nextConfig;
