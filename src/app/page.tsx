@@ -66,19 +66,22 @@ function RevealSection({ children, className = '', delay = 0 }: { children: Reac
   );
 }
 
-const VAGARO_SCRIPT_SRC = 'https://www.vagaro.com//resources/WidgetEmbeddedLoader/OZqqDJWuDpGcT3qmV35y79oz34mC2PeFJ4mC30m9dSycvCu7gCmjZcoapOUc9CvdfQOW?v=OwzJszB4uU3XkF7ubD6WVynuBHbzZEY3s3ZxBs29Nz80#';
-
 export default function Home() {
   const vagaroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const el = vagaroRef.current;
-    if (!el) return;
-    if (el.querySelector('script[src*="WidgetEmbeddedLoader"]')) return;
+    if (!el || el.dataset.loaded) return;
+    el.dataset.loaded = 'true';
+    // Inject HTML (innerHTML won't execute scripts, so we do that separately)
+    el.innerHTML = `<div id="frameTitle" class="embedded-widget-title" style="font-size: 23px; color: #333;font-family:Arial, Helvetica, sans-serif; line-height:24px; padding: 18px 10px 8px; text-align: center; box-sizing: border-box;"></div>
+<div class="vagaro" style="width:100%;padding:0;border:0;margin:0 auto;text-align:center;"><style>.vagaro a {font-size:14px; color:#AAA; text-decoration:none;}</style><a href="https://www.vagaro.com/pro/">Powered by Vagaro</a>&nbsp;<a href="https://www.vagaro.com/pro/salon-software">Salon Software</a>,&nbsp;<a href="https://www.vagaro.com/pro/spa-software">Spa Software</a>&nbsp;&amp;&nbsp;<a href="https://www.vagaro.com/pro/fitness-software">Fitness Software</a></div>`;
+    // Create and append the script tag separately so it actually executes
     const script = document.createElement('script');
     script.type = 'text/javascript';
-    script.src = VAGARO_SCRIPT_SRC;
-    el.appendChild(script);
+    script.src = 'https://www.vagaro.com//resources/WidgetEmbeddedLoader/OZqqDJWuDpGcT3qmV35y79oz34mC2PeFJ4mC30m9dSycvCu7gCmjZcoapOUc9CvdfQOW?v=OwzJszB4uU3XkF7ubD6WVynuBHbzZEY3s3ZxBs29Nz80#';
+    const vagaroDiv = el.querySelector('.vagaro');
+    if (vagaroDiv) vagaroDiv.appendChild(script);
   }, []);
 
   return (
@@ -379,13 +382,7 @@ export default function Home() {
               </p>
             </RevealSection>
 
-            <div className="w-full max-w-2xl mx-auto">
-              <div id='frameTitle' className='embedded-widget-title' style={{fontSize: '23px', color: '#333', fontFamily: 'Arial, Helvetica, sans-serif', lineHeight: '24px', padding: '18px 10px 8px', textAlign: 'center', boxSizing: 'border-box'}}></div>
-              <div ref={vagaroRef} className="vagaro" style={{width: '250px', padding: 0, border: 0, margin: '0 auto', textAlign: 'center'}}>
-                <style>{`.vagaro a {font-size:14px; color:#AAA; text-decoration:none;}`}</style>
-                <a href="https://www.vagaro.com/pro/">Powered by Vagaro</a>&nbsp;<a href="https://www.vagaro.com/pro/salon-software">Salon Software</a>,&nbsp;<a href="https://www.vagaro.com/pro/spa-software">Spa Software</a>&nbsp;&amp;&nbsp;<a href="https://www.vagaro.com/pro/fitness-software">Fitness Software</a>
-              </div>
-            </div>
+            <div ref={vagaroRef} className="w-full max-w-2xl mx-auto" />
 
             <p className="mt-6 text-sm text-gray-500">
               Or call <a href="tel:+17282270765" className="text-gold hover:text-gold-light transition-colors">(728) 227-0765</a> to schedule
