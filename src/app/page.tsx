@@ -67,16 +67,7 @@ function RevealSection({ children, className = '', delay = 0 }: { children: Reac
 }
 
 export default function Home() {
-  useEffect(() => {
-    const vagaroDiv = document.querySelector('.vagaro');
-    if (!vagaroDiv) return;
-    const existing = vagaroDiv.querySelector('script[src*="WidgetEmbeddedLoader"]');
-    if (existing) return;
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = 'https://www.vagaro.com//resources/WidgetEmbeddedLoader/OZqqDJWuDpGcT3qnV3avV34mC2PeFJ4mC30m9dSycvCu7gCmjZcoapOUcPCvdfQOW?v=7Fv8gRsUleuzRwBdWyIVekDIsFFyBo6mbUzQu7bXutAG#';
-    vagaroDiv.appendChild(script);
-  }, []);
+
 
 
   return (
@@ -378,10 +369,8 @@ export default function Home() {
             </RevealSection>
 
             <RevealSection delay={150}>
-              <div className="w-full max-w-2xl mx-auto">
-                <div id='frameTitle' className='embedded-widget-title' style={{fontSize: '23px', color: '#333', fontFamily: 'Arial, Helvetica, sans-serif', lineHeight: '24px', padding: '18px 10px 8px', textAlign: 'center', boxSizing: 'border-box'}}></div>
-                <div className="vagaro" style={{width: '100%', padding: 0, border: 0, margin: '0 auto', textAlign: 'center'}}><style>{`.vagaro a {font-size:14px; color:#AAA; text-decoration:none;}`}</style><a href="https://www.vagaro.com/pro/">Powered by Vagaro</a>&nbsp;<a href="https://www.vagaro.com/pro/salon-software">Salon Software</a>,&nbsp;<a href="https://www.vagaro.com/pro/spa-software">Spa Software</a>&nbsp;&amp;&nbsp;<a href="https://www.vagaro.com/pro/fitness-software">Fitness Software</a></div>
-              </div>
+              <div className="w-full max-w-2xl mx-auto" dangerouslySetInnerHTML={{ __html: `<div id='frameTitle' class='embedded-widget-title' style='font-size: 23px; color: #333;font-family:Arial, Helvetica, sans-serif; line-height:24px; padding: 18px 10px 8px; text-align: center; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;'></div>
+<div class="vagaro" style="width:250px; padding:0; border:0; margin:0 auto; text-align:center;"><style>.vagaro a {font-size:14px; color:#AAA; text-decoration:none;}</style><a href="https://www.vagaro.com/pro/">Powered by Vagaro</a>&nbsp;<a href="https://www.vagaro.com/pro/salon-software">Salon Software</a>,&nbsp;<a href="https://www.vagaro.com/pro/spa-software">Spa Software</a>&nbsp;&amp;&nbsp;<a href="https://www.vagaro.com/pro/fitness-software">Fitness Software</a><script type="text/javascript" src="https://www.vagaro.com//resources/WidgetEmbeddedLoader/OZqqDJWuDpGcT3qnV3avV34mC2PeFJ4mC30m9dSycvCu7gCmjZcoapOUcPCvdfQOW?v=7Fv8gRsUleuzRwBdWyIVekDIsFFyBo6mbUzQu7bXutAG#"></script></div>` }} />
             </RevealSection>
 
             <p className="mt-6 text-sm text-gray-500">
