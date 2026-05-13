@@ -67,6 +67,16 @@ function RevealSection({ children, className = '', delay = 0 }: { children: Reac
 }
 
 export default function Home() {
+  useEffect(() => {
+    const vagaroDiv = document.querySelector('.vagaro');
+    if (!vagaroDiv) return;
+    const existing = vagaroDiv.querySelector('script[src*="WidgetEmbeddedLoader"]');
+    if (existing) return;
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://www.vagaro.com/resources/WidgetEmbeddedLoader/OZqqDJWuDpGcT3qmV35y6JuPlXiz3avV34mC2PeFJ4mC30m9dSycvCu7gevEhAJDXwOapcUbfY?v=yqHGyZIZKzw3TobGpqXqZMRa9iyy8RVN812BKjE3zWw0#';
+    vagaroDiv.appendChild(script);
+  }, []);
 
 
   return (
@@ -368,15 +378,9 @@ export default function Home() {
             </RevealSection>
 
             <RevealSection delay={150}>
-              <div className="bg-charcoal border border-white/5 rounded-lg p-8 min-h-[400px] flex items-center justify-center hover:border-gold/20 transition-all duration-500">
-                <div className="text-center">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full border border-gold/30 flex items-center justify-center hover:border-gold hover:scale-110 transition-all duration-300">
-                    <Calendar className="w-8 h-8 text-gold" />
-                  </div>
-                  <p className="text-sm text-gray-400 mb-2">Vagaro Booking Widget</p>
-                  <p className="text-xs text-gray-600">Replace this placeholder with the Vagaro embed code</p>
-                  <p className="text-[10px] text-gray-700 mt-2">https://www.vagaro.com/theozarkaesthetician</p>
-                </div>
+              <div className="w-full max-w-2xl mx-auto">
+                <div id='frameTitle' className='embedded-widget-title' style={{fontSize: '23px', color: '#C9A84C', fontFamily: 'Georgia, serif', lineHeight: '24px', padding: '18px 10px 8px', textAlign: 'center', boxSizing: 'border-box'}}></div>
+                <div className="vagaro" style={{width: '100%', padding: 0, border: 0, margin: '0 auto', textAlign: 'center'}}><style>{`.vagaro a {font-size:14px; color:#AAA; text-decoration:none;}`}</style><a href="https://www.vagaro.com/pro/">Powered by Vagaro</a>&nbsp;<a href="https://www.vagaro.com/pro/salon-software">Salon Software</a>,&nbsp;<a href="https://www.vagaro.com/pro/spa-software">Spa Software</a>&nbsp;&amp;&nbsp;<a href="https://www.vagaro.com/pro/fitness-software">Fitness Software</a></div>
               </div>
             </RevealSection>
 
