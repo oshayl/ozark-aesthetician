@@ -379,15 +379,13 @@ export default function Home() {
               </p>
             </RevealSection>
 
-            <RevealSection delay={150}>
-              <div className="w-full max-w-2xl mx-auto">
-                <div id='frameTitle' className='embedded-widget-title' style={{fontSize: '23px', color: '#333', fontFamily: 'Arial, Helvetica, sans-serif', lineHeight: '24px', padding: '18px 10px 8px', textAlign: 'center', boxSizing: 'border-box'}}></div>
-                <div ref={vagaroRef} className="vagaro" style={{width: '250px', padding: 0, border: 0, margin: '0 auto', textAlign: 'center'}}>
-                  <style>{`.vagaro a {font-size:14px; color:#AAA; text-decoration:none;}`}</style>
-                  <a href="https://www.vagaro.com/pro/">Powered by Vagaro</a>&nbsp;<a href="https://www.vagaro.com/pro/salon-software">Salon Software</a>,&nbsp;<a href="https://www.vagaro.com/pro/spa-software">Spa Software</a>&nbsp;&amp;&nbsp;<a href="https://www.vagaro.com/pro/fitness-software">Fitness Software</a>
-                </div>
+            <div className="w-full max-w-2xl mx-auto">
+              <div id='frameTitle' className='embedded-widget-title' style={{fontSize: '23px', color: '#333', fontFamily: 'Arial, Helvetica, sans-serif', lineHeight: '24px', padding: '18px 10px 8px', textAlign: 'center', boxSizing: 'border-box'}}></div>
+              <div ref={vagaroRef} className="vagaro" style={{width: '250px', padding: 0, border: 0, margin: '0 auto', textAlign: 'center'}}>
+                <style>{`.vagaro a {font-size:14px; color:#AAA; text-decoration:none;}`}</style>
+                <a href="https://www.vagaro.com/pro/">Powered by Vagaro</a>&nbsp;<a href="https://www.vagaro.com/pro/salon-software">Salon Software</a>,&nbsp;<a href="https://www.vagaro.com/pro/spa-software">Spa Software</a>&nbsp;&amp;&nbsp;<a href="https://www.vagaro.com/pro/fitness-software">Fitness Software</a>
               </div>
-            </RevealSection>
+            </div>
 
             <p className="mt-6 text-sm text-gray-500">
               Or call <a href="tel:+17282270765" className="text-gold hover:text-gold-light transition-colors">(728) 227-0765</a> to schedule
