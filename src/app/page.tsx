@@ -74,7 +74,7 @@ export default function Home() {
     if (existing) return;
     const script = document.createElement('script');
     script.type = 'text/javascript';
-    script.src = 'https://www.vagaro.com/resources/WidgetEmbeddedLoader/OZqqDJWuDpGcT3qmV35y6JuPlXiz3avV34mC2PeFJ4mC30m9dSycvCu7gevEhAJDXwOapcUbfY?v=yqHGyZIZKzw3TobGpqXqZMRa9iyy8RVN812BKjE3zWw0#';
+    script.src = 'https://www.vagaro.com//resources/WidgetEmbeddedLoader/OZqqDJWuDpGcT3qnV3avV34mC2PeFJ4mC30m9dSycvCu7gCmjZcoapOUcPCvdfQOW?v=7Fv8gRsUleuzRwBdWyIVekDIsFFyBo6mbUzQu7bXutAG#';
     vagaroDiv.appendChild(script);
   }, []);
 
@@ -379,7 +379,7 @@ export default function Home() {
 
             <RevealSection delay={150}>
               <div className="w-full max-w-2xl mx-auto">
-                <div id='frameTitle' className='embedded-widget-title' style={{fontSize: '23px', color: '#C9A84C', fontFamily: 'Georgia, serif', lineHeight: '24px', padding: '18px 10px 8px', textAlign: 'center', boxSizing: 'border-box'}}></div>
+                <div id='frameTitle' className='embedded-widget-title' style={{fontSize: '23px', color: '#333', fontFamily: 'Arial, Helvetica, sans-serif', lineHeight: '24px', padding: '18px 10px 8px', textAlign: 'center', boxSizing: 'border-box'}}></div>
                 <div className="vagaro" style={{width: '100%', padding: 0, border: 0, margin: '0 auto', textAlign: 'center'}}><style>{`.vagaro a {font-size:14px; color:#AAA; text-decoration:none;}`}</style><a href="https://www.vagaro.com/pro/">Powered by Vagaro</a>&nbsp;<a href="https://www.vagaro.com/pro/salon-software">Salon Software</a>,&nbsp;<a href="https://www.vagaro.com/pro/spa-software">Spa Software</a>&nbsp;&amp;&nbsp;<a href="https://www.vagaro.com/pro/fitness-software">Fitness Software</a></div>
               </div>
             </RevealSection>
