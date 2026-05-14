@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Sparkles, Gem, Trophy, Calendar, MapPin, ChevronDown, Droplets, Zap, Microscope, Heart, Star, Sun } from 'lucide-react';
+import { Sparkles, Gem, Trophy, Calendar, MapPin, ChevronDown, Droplets, Zap, Microscope, Heart, Star, Sun, Flame, Clock } from 'lucide-react';
 
 const CREDENTIALS = [
   "Advanced Clinical Skin Specialist",
@@ -12,35 +12,123 @@ const CREDENTIALS = [
   "Licensed Aesthetician",
 ];
 
-const SERVICE_CATEGORIES = [
+const SERVICES = [
   {
-    id: 'skin',
-    label: 'Skin Treatments',
-    icon: Sparkles,
+    id: 'medical-skin',
+    label: 'Medical-Grade Skin Treatments',
     items: [
-      { name: 'VI Precision Plus Peels', desc: 'Advanced chemical peel targeting hyperpigmentation and sun damage for brighter, more even skin.' },
-      { name: 'BioRePeel', desc: 'No-downtime bio-stimulating peel that revitalizes without peeling — perfect for busy schedules.' },
-      { name: 'PRX T33 Peel', desc: 'Deep hydration and biorevitalization without exfoliation. Glass skin in one session.' },
-      { name: 'Chemical Peels', desc: 'Medical-grade peels customized for your skin type and concerns.' },
-      { name: 'Dermaplaning', desc: 'Physical exfoliation that removes dead skin and peach fuzz for instant radiance.' },
-      { name: 'Acne Treatment', desc: 'Targeted clinical solutions for active breakouts, scarring, and prevention.' },
-      { name: "Men's Grooming Facial", desc: "Designed for men's thicker skin and shaving-related concerns." },
-      { name: 'Luxury Facials', desc: 'Indulgent multi-step treatments for deep relaxation and glowing results.' },
-      { name: 'Customized Facials', desc: 'Tailored to your unique skin goals — never cookie-cutter.' },
+      'Medical Grade Skincare Product Consultation',
+      'The Ozark Signature Facial',
+      "Men's Luxury Grooming Facial",
+      'Signature HydraFacial MD',
+      'Deluxe HydraFacial MD',
+      'Platinum HydraFacial MD',
+      'HydraFacial MD (Back)',
+      'Signature DiamondGlow',
+      'Advanced/Luxury DiamondGlow',
+      'DiamondGlow Express',
+      'Back Facial',
+      'Clear Skin Acne Program',
+      'Clear Skin Advanced Acne Program',
+      { name: 'Extractions ONLY', note: 'Free if combined with any facial' },
     ],
   },
   {
-    id: 'signature',
-    label: 'Signature Treatments',
-    icon: Gem,
+    id: 'repechage',
+    label: 'Répechage Luxury Facials',
     items: [
-      { name: 'Hydrafacial MD', desc: 'Multi-step cleansing, exfoliation, extraction, and hydration — instant glow, zero downtime.', featured: true },
-      { name: 'Glo2 Facial System', desc: 'Oxygenation and luminous results through patented OxyPod technology.' },
-      { name: 'Microneedling (RF / SkinPen)', desc: 'Collagen induction therapy for fine lines, texture, and scarring.' },
-      { name: 'Aerolase', desc: 'Gentle 650-microsecond laser for acne, rosacea, facial veins, and melasma — safe for all skin types.' },
+      'Répechage Vita Cura 5-Phase Firming Facial',
+      'Répechage Four-Layer Facial',
+    ],
+  },
+  {
+    id: 'microneedling',
+    label: 'Microneedling',
+    items: [
+      'SkinPen Microneedling Face',
+      'SkinPen Microneedling Face & Neck',
+      'SkinPen Microneedling Face Series of 3 Package',
+      'SkinPen Microneedling Face & Neck Package of 3',
+      'SkinPen Microneedling Body',
+    ],
+  },
+  {
+    id: 'peels',
+    label: 'Peels',
+    items: [
+      'The Glow Lift / Red Carpet Peel',
+      'BioRePeel (No Downtime Peel)',
+      'Acne Peel',
+      'Pigment Peel',
+      'Body Peel',
+    ],
+  },
+  {
+    id: 'dermaplane',
+    label: 'Dermaplane',
+    items: [
+      'Express Dermaplane',
+      'Luxury Dermaplane Facial',
+    ],
+  },
+  {
+    id: 'waxing',
+    label: 'Waxing',
+    compact: true,
+    items: [
+      'Brow Shaping', 'Brow Maintenance', 'Lips', 'Chin',
+      'Full Face', 'Lip and Chin', 'Side-Burns',
+      'Underarms', 'Full Arms', 'Half Arms',
+      'Full Legs', 'Half Legs', 'Chest', 'Stomach',
+      'Back', 'Bikini', 'Brazilian', 'Full Body',
+    ],
+  },
+  {
+    id: 'brows-lashes',
+    label: 'Brows & Lashes',
+    items: [
+      'Eyebrow Lamination',
+      'Lamination + Tint',
+      'Lamination + Tint + Wax/Shaping',
+      'Eyebrow Tinting',
+      'Eyelash Tinting',
+      'Brow + Lash Tint',
+    ],
+  },
+  {
+    id: 'botox',
+    label: 'Botox Cosmetics',
+    items: [
+      { name: 'Botox', note: 'Select days per physician visit' },
+    ],
+  },
+  {
+    id: 'add-ons',
+    label: 'Add-On Treatments',
+    items: [
+      'Dermaplane Add-On',
+      'Peel Add-On',
+      'Growth Factors / Peptides',
+      'LED Light Therapy',
+      'Exosome Therapy',
+      'High Frequency',
+      'Extended Extractions',
+      'Lymphatic Drainage Facial Massage',
     ],
   },
 ];
+
+const COMING_SOON = {
+  label: 'Advanced Laser Services',
+  items: [
+    'RF Microneedling',
+    'CO₂ Laser Resurfacing',
+    'Pico Laser Tattoo Removal',
+    'Acne Reduction No Downtime Laser Treatment',
+    'IPL / BBL (Sun damage, pigment irregularities, rosacea, facial veins)',
+    'Gentle Resurfacing for tighter pores & smoother skin',
+  ],
+};
 
 
 
@@ -230,12 +318,12 @@ export default function Home() {
         {/* ── Divider ── */}
         <div className="max-w-6xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" /></div>
 
-        {/* ── Services — Visual Grid + Detail ── */}
+        {/* ── Services ── */}
         <section id="services" className="py-24 px-6 relative overflow-hidden">
           <div className="absolute inset-0">
             <img src="/images/hero/drone-1.png" alt="" className="w-full h-full object-cover opacity-[0.04] grayscale" />
           </div>
-          <div className="relative z-10 max-w-4xl mx-auto">
+          <div className="relative z-10 max-w-5xl mx-auto">
             <RevealSection>
               <div className="text-center mb-16">
                 <span className="text-[10px] tracking-[0.25em] text-gold uppercase font-medium">What We Offer</span>
@@ -243,56 +331,60 @@ export default function Home() {
               </div>
             </RevealSection>
 
-            {/* Signature Treatments */}
-            <RevealSection delay={100}>
-              <div className="mb-14">
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="w-8 h-px bg-gold" />
-                  <span className="text-[10px] tracking-[0.2em] text-gold uppercase font-medium">Signature Treatments</span>
+            <div className="grid md:grid-cols-2 gap-x-10 gap-y-10">
+              {SERVICES.map((cat, ci) => (
+                <RevealSection key={cat.id} delay={ci * 80}>
+                  <div className="bg-white/[0.02] border border-white/5 rounded-lg p-6 hover:border-gold/15 transition-all duration-300">
+                    <div className="flex items-center gap-3 mb-5">
+                      <div className="w-6 h-px bg-gold" />
+                      <h3 className="text-sm tracking-[0.15em] text-gold uppercase font-medium">{cat.label}</h3>
+                    </div>
+                    <ul className={cat.compact ? 'grid grid-cols-2 gap-x-3 gap-y-1' : 'space-y-2'}>
+                      {cat.items.map((item, i) => {
+                        const name = typeof item === 'string' ? item : item.name;
+                        const note = typeof item === 'string' ? null : item.note;
+                        return (
+                          <li key={i} className="group flex items-start gap-2 py-0.5">
+                            <span className="mt-[7px] w-1 h-1 rounded-full bg-gold/30 group-hover:bg-gold transition-colors shrink-0" />
+                            <div className="min-w-0">
+                              <span className="text-[13px] text-gray-300 group-hover:text-gold transition-colors leading-snug">{name}</span>
+                              {note && <span className="text-[10px] text-gray-600 ml-1">({note})</span>}
+                            </div>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                </RevealSection>
+              ))}
+            </div>
+
+            {/* Coming Soon */}
+            <RevealSection delay={SERVICES.length * 80}>
+              <div className="mt-10 relative overflow-hidden rounded-lg border border-gold/20 bg-gradient-to-br from-gold/[0.04] to-transparent p-8">
+                <div className="absolute top-4 right-5">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold/10 border border-gold/25 text-gold text-[9px] tracking-[0.15em] uppercase font-medium">
+                    <Clock className="w-3 h-3" />
+                    Coming Soon
+                  </span>
                 </div>
-                <div className="space-y-0">
-                  {SERVICE_CATEGORIES.find(c => c.id === 'signature')!.items.map((service, i) => (
-                    <div
-                      key={service.name}
-                      className={`group flex items-center justify-between py-4 border-b border-white/5 transition-all duration-300 hover:border-gold/20 ${'featured' in service && service.featured ? 'relative' : ''}`}
-                    >
-                      <div className="flex items-center gap-4">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gold/40 group-hover:bg-gold transition-colors duration-300 shrink-0" />
-                        <span className="text-base text-white group-hover:text-gold transition-colors duration-300">{service.name}</span>
-                        {'featured' in service && service.featured && (
-                          <span className="text-[8px] px-2 py-0.5 rounded-full bg-gold/10 text-gold border border-gold/20 tracking-[0.1em] uppercase">Featured</span>
-                        )}
-                      </div>
-                      <span className="text-xs text-gray-600 group-hover:text-gold/60 transition-colors duration-300 hidden sm:block">{service.desc}</span>
+                <div className="flex items-center gap-3 mb-5">
+                  <Flame className="w-5 h-5 text-gold" />
+                  <h3 className="text-sm tracking-[0.15em] text-gold uppercase font-medium">{COMING_SOON.label}</h3>
+                </div>
+                <div className="grid sm:grid-cols-2 gap-x-8 gap-y-2">
+                  {COMING_SOON.items.map((item, i) => (
+                    <div key={i} className="group flex items-center gap-2 py-1">
+                      <span className="w-1 h-1 rounded-full bg-gold/30 group-hover:bg-gold transition-colors shrink-0" />
+                      <span className="text-[13px] text-gray-400 group-hover:text-gold transition-colors">{item}</span>
                     </div>
                   ))}
                 </div>
               </div>
             </RevealSection>
 
-            {/* Skin Treatments */}
-            <RevealSection delay={200}>
-              <div className="mb-14">
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="w-8 h-px bg-gold" />
-                  <span className="text-[10px] tracking-[0.2em] text-gold uppercase font-medium">Skin Treatments</span>
-                </div>
-                <div className="grid md:grid-cols-2 gap-x-12 gap-y-0">
-                  {SERVICE_CATEGORIES.find(c => c.id === 'skin')!.items.map((service, i) => (
-                    <div
-                      key={service.name}
-                      className={`group flex items-center gap-4 py-3.5 border-b border-white/5 hover:border-gold/20 transition-all duration-300 ${i >= Math.ceil(SERVICE_CATEGORIES.find(c => c.id === 'skin')!.items.length / 2) ? 'md:border-l md:border-b md:pl-6' : ''}`}
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-gold/40 group-hover:bg-gold transition-colors duration-300 shrink-0" />
-                      <span className="text-sm text-white group-hover:text-gold transition-colors duration-300">{service.name}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </RevealSection>
-
-            <RevealSection delay={300}>
-              <div className="text-center mt-4">
+            <RevealSection delay={SERVICES.length * 80 + 100}>
+              <div className="text-center mt-10">
                 <a href="#book" className="inline-block px-8 py-3 bg-gold text-black text-sm font-medium tracking-[0.15em] uppercase hover:bg-gold-light transition-all duration-300 hover:shadow-lg hover:shadow-gold/20">
                   Book Your Treatment
                 </a>
