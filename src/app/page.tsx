@@ -169,22 +169,6 @@ function ServiceCard({ children, index }: { children: React.ReactNode; index: nu
 }
 
 export default function Home() {
-  const vagaroRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = vagaroRef.current;
-    if (!el || el.dataset.loaded) return;
-    el.dataset.loaded = 'true';
-    // Inject HTML (innerHTML won't execute scripts, so we do that separately)
-    el.innerHTML = `<div id="frameTitle" class="embedded-widget-title" style="font-size: 23px; color: #333;font-family:Arial, Helvetica, sans-serif; line-height:24px; padding: 18px 10px 8px; text-align: center; box-sizing: border-box;"></div>
-<div class="vagaro" style="width:100%;padding:0;border:0;margin:0 auto;text-align:center;"><style>.vagaro a {font-size:14px; color:#AAA; text-decoration:none;}</style><a href="https://www.vagaro.com/pro/">Powered by Vagaro</a>&nbsp;<a href="https://www.vagaro.com/pro/salon-software">Salon Software</a>,&nbsp;<a href="https://www.vagaro.com/pro/spa-software">Spa Software</a>&nbsp;&amp;&nbsp;<a href="https://www.vagaro.com/pro/fitness-software">Fitness Software</a></div>`;
-    // Create and append the script tag separately so it actually executes
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = 'https://www.vagaro.com//resources/WidgetEmbeddedLoader/OZqqDJWuDpGcT3qmV35y79oz34mC2PeFJ4mC30m9dSycvCu7gCmjZcoapOUc9CvdfQOW?v=OwzJszB4uU3XkF7ubD6WVynuBHbzZEY3s3ZxBs29Nz80#';
-    const vagaroDiv = el.querySelector('.vagaro');
-    if (vagaroDiv) vagaroDiv.appendChild(script);
-  }, []);
 
   return (
     <>
@@ -226,7 +210,7 @@ export default function Home() {
 
             <RevealSection delay={450}>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#book" className="px-8 py-3.5 bg-gold text-black text-sm font-medium tracking-[0.15em] uppercase hover:bg-gold-light transition-all duration-300 hover:shadow-lg hover:shadow-gold/20">
+                <a href="https://www.vagaro.com/Users/BusinessWidget.aspx?enc=MMLjhIwJMcwFQhXLL7ifVF3oikrklc1sIDB0VG7CXINPtAnDMVA4yNapI3NoQG1fDQ/K2ePvGait+Y/ayqZ4WLHCBUEDqMuESjI9fp1DDP9CBJ9GZ+zwCkdfgr0hQV0gtR6SPbTefAPX8LG2WnJ01k3cHXGsXHW7woUSHyRLI/fdwFUcIgqRay4W0ppU8kibhERfSXPQ2V9ipp/xM5VMAxL/Qz6gc77ThzVdg90DGzv91RlJ8k4PezUSl7FvaV4ae71SVL3lbfsY61I1kp2iEit9YjGqiYlna8SHZNE/tRmUOI3OC+AW+nXzz4ln2drf0Jp3pylgDU2qzAtovgrfvutl0YECfvOFa9zkdTJKdTbGRoq8LeDGib+uerjCEB/VaA1kmejr1Z2x6n1dxZgEBsOjaz1icfKsBmOxYgtna9U8VvaiGOXShTPdUx03Dna6czhnfahe6+ed8sWiHvUF6g==" target="_blank" rel="noopener noreferrer" className="px-8 py-3.5 bg-gold text-black text-sm font-medium tracking-[0.15em] uppercase hover:bg-gold-light transition-all duration-300 hover:shadow-lg hover:shadow-gold/20">
                   Book Appointment
                 </a>
                 <a href="#services" className="px-8 py-3.5 border border-white/20 text-white text-sm tracking-[0.15em] uppercase hover:border-gold hover:text-gold transition-all duration-300">
@@ -321,7 +305,7 @@ export default function Home() {
             <RevealSection delay={300}>
               <div className="text-center">
                 <p className="text-gray-400 text-sm mb-6 max-w-md mx-auto">Experience the treatment that delivers visible results from the very first session.</p>
-                <a href="#book" className="inline-block px-10 py-4 bg-gold text-black text-sm font-medium tracking-[0.15em] uppercase hover:bg-gold-light hover:shadow-lg hover:shadow-gold/20 transition-all duration-300">
+                <a href="https://www.vagaro.com/Users/BusinessWidget.aspx?enc=MMLjhIwJMcwFQhXLL7ifVF3oikrklc1sIDB0VG7CXINPtAnDMVA4yNapI3NoQG1fDQ/K2ePvGait+Y/ayqZ4WLHCBUEDqMuESjI9fp1DDP9CBJ9GZ+zwCkdfgr0hQV0gtR6SPbTefAPX8LG2WnJ01k3cHXGsXHW7woUSHyRLI/fdwFUcIgqRay4W0ppU8kibhERfSXPQ2V9ipp/xM5VMAxL/Qz6gc77ThzVdg90DGzv91RlJ8k4PezUSl7FvaV4ae71SVL3lbfsY61I1kp2iEit9YjGqiYlna8SHZNE/tRmUOI3OC+AW+nXzz4ln2drf0Jp3pylgDU2qzAtovgrfvutl0YECfvOFa9zkdTJKdTbGRoq8LeDGib+uerjCEB/VaA1kmejr1Z2x6n1dxZgEBsOjaz1icfKsBmOxYgtna9U8VvaiGOXShTPdUx03Dna6czhnfahe6+ed8sWiHvUF6g==" target="_blank" rel="noopener noreferrer" className="inline-block px-10 py-4 bg-gold text-black text-sm font-medium tracking-[0.15em] uppercase hover:bg-gold-light hover:shadow-lg hover:shadow-gold/20 transition-all duration-300">
                   Book Your Hydrafacial
                 </a>
               </div>
@@ -399,7 +383,7 @@ export default function Home() {
 
             <RevealSection delay={SERVICES.length * 80 + 100}>
               <div className="text-center mt-10">
-                <a href="#book" className="inline-block px-8 py-3 bg-gold text-black text-sm font-medium tracking-[0.15em] uppercase hover:bg-gold-light transition-all duration-300 hover:shadow-lg hover:shadow-gold/20">
+                <a href="https://www.vagaro.com/Users/BusinessWidget.aspx?enc=MMLjhIwJMcwFQhXLL7ifVF3oikrklc1sIDB0VG7CXINPtAnDMVA4yNapI3NoQG1fDQ/K2ePvGait+Y/ayqZ4WLHCBUEDqMuESjI9fp1DDP9CBJ9GZ+zwCkdfgr0hQV0gtR6SPbTefAPX8LG2WnJ01k3cHXGsXHW7woUSHyRLI/fdwFUcIgqRay4W0ppU8kibhERfSXPQ2V9ipp/xM5VMAxL/Qz6gc77ThzVdg90DGzv91RlJ8k4PezUSl7FvaV4ae71SVL3lbfsY61I1kp2iEit9YjGqiYlna8SHZNE/tRmUOI3OC+AW+nXzz4ln2drf0Jp3pylgDU2qzAtovgrfvutl0YECfvOFa9zkdTJKdTbGRoq8LeDGib+uerjCEB/VaA1kmejr1Z2x6n1dxZgEBsOjaz1icfKsBmOxYgtna9U8VvaiGOXShTPdUx03Dna6czhnfahe6+ed8sWiHvUF6g==" target="_blank" rel="noopener noreferrer" className="inline-block px-8 py-3 bg-gold text-black text-sm font-medium tracking-[0.15em] uppercase hover:bg-gold-light transition-all duration-300 hover:shadow-lg hover:shadow-gold/20">
                   Book Your Treatment
                 </a>
               </div>
@@ -475,11 +459,11 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" /></div>
 
         {/* ── Book Appointment ── */}
-        <section id="book" className="py-24 px-6 relative overflow-hidden">
+        <section id="book" className="py-28 px-6 relative overflow-hidden">
           <div className="absolute inset-0">
             <img src="/images/hero/drone-2.png" alt="" className="w-full h-full object-cover opacity-[0.07] grayscale" />
           </div>
-          <div className="relative z-10 max-w-4xl mx-auto text-center">
+          <div className="relative z-10 max-w-3xl mx-auto text-center">
             <RevealSection>
               <span className="text-[10px] tracking-[0.25em] text-gold uppercase font-medium">Ready?</span>
               <h2 className="text-3xl md:text-4xl font-serif mt-3 mb-4">Book Your Appointment</h2>
@@ -488,11 +472,22 @@ export default function Home() {
               </p>
             </RevealSection>
 
-            <div ref={vagaroRef} className="w-full max-w-2xl mx-auto" />
+            <RevealSection delay={150}>
+              <a
+                href="https://www.vagaro.com/Users/BusinessWidget.aspx?enc=MMLjhIwJMcwFQhXLL7ifVF3oikrklc1sIDB0VG7CXINPtAnDMVA4yNapI3NoQG1fDQ/K2ePvGait+Y/ayqZ4WLHCBUEDqMuESjI9fp1DDP9CBJ9GZ+zwCkdfgr0hQV0gtR6SPbTefAPX8LG2WnJ01k3cHXGsXHW7woUSHyRLI/fdwFUcIgqRay4W0ppU8kibhERfSXPQ2V9ipp/xM5VMAxL/Qz6gc77ThzVdg90DGzv91RlJ8k4PezUSl7FvaV4ae71SVL3lbfsY61I1kp2iEit9YjGqiYlna8SHZNE/tRmUOI3OC+AW+nXzz4ln2drf0Jp3pylgDU2qzAtovgrfvutl0YECfvOFa9zkdTJKdTbGRoq8LeDGib+uerjCEB/VaA1kmejr1Z2x6n1dxZgEBsOjaz1icfKsBmOxYgtna9U8VvaiGOXShTPdUx03Dna6czhnfahe6+ed8sWiHvUF6g=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-12 py-4.5 bg-gold text-black text-sm font-medium tracking-[0.2em] uppercase hover:bg-gold-light hover:shadow-xl hover:shadow-gold/25 transition-all duration-300"
+              >
+                Book Online
+              </a>
+            </RevealSection>
 
-            <p className="mt-6 text-sm text-gray-500">
-              Or call <a href="tel:+17282270765" className="text-gold hover:text-gold-light transition-colors">(728) 227-0765</a> to schedule
-            </p>
+            <RevealSection delay={250}>
+              <p className="mt-8 text-sm text-gray-500">
+                Or call <a href="tel:+17282270765" className="text-gold hover:text-gold-light transition-colors">(728) 227-0765</a> to schedule
+              </p>
+            </RevealSection>
           </div>
         </section>
 
