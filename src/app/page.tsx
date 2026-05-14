@@ -316,6 +316,35 @@ export default function Home() {
         {/* ── Divider ── */}
         <div className="max-w-6xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" /></div>
 
+        {/* ── Best of the Lake Award ── */}
+        <section className="py-20 px-6 relative overflow-hidden">
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="w-[500px] h-[500px] rounded-full bg-gold/[0.03] blur-[140px]" />
+          </div>
+          <div className="relative z-10 max-w-4xl mx-auto text-center">
+            <RevealSection>
+              <div className="flex flex-col items-center">
+                <div className="relative mb-8">
+                  <img
+                    src="/images/award/lakes-best-2026.webp"
+                    alt="Best of the Lake 2026 — Best Aesthetician"
+                    className="w-48 md:w-56 h-auto drop-shadow-[0_0_40px_rgba(201,168,76,0.25)]"
+                  />
+                  <div className="absolute -inset-4 rounded-full bg-gold/[0.06] blur-2xl -z-10 animate-pulse" />
+                </div>
+                <h2 className="text-2xl md:text-3xl font-serif mb-3">Best Aesthetician</h2>
+                <p className="text-gold text-sm tracking-[0.2em] uppercase font-medium mb-4">Lake Lifestyles Magazine — Best of the Lake 2026</p>
+                <p className="text-gray-400 max-w-lg mx-auto leading-relaxed">
+                  Recognized by the Lake of the Ozarks community for excellence in skincare. Your results speak for themselves — and so do your clients.
+                </p>
+              </div>
+            </RevealSection>
+          </div>
+        </section>
+
+        {/* ── Divider ── */}
+        <div className="max-w-6xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" /></div>
+
         {/* ── Services ── */}
         <section id="services" className="py-24 px-6 relative overflow-hidden">
           <div className="absolute inset-0">
