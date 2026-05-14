@@ -333,9 +333,9 @@ export default function Home() {
                   <div className="absolute -inset-4 rounded-full bg-gold/[0.06] blur-2xl -z-10 animate-pulse" />
                 </div>
                 <h2 className="text-2xl md:text-3xl font-serif mb-3">Best Aesthetician</h2>
-                <p className="text-gold text-sm tracking-[0.2em] uppercase font-medium mb-4">Lake Lifestyles Magazine — Best of the Lake 2026</p>
+                <p className="text-gold text-sm tracking-[0.2em] uppercase font-medium mb-4">Best of the Lake 2026 — Lake Lifestyles Magazine</p>
                 <p className="text-gray-400 max-w-lg mx-auto leading-relaxed">
-                  Recognized by the Lake of the Ozarks community for excellence in skincare. Your results speak for themselves — and so do your clients.
+                  Thank you to everyone who voted and trusted us with your skin. This recognition belongs to our clients — we're grateful for the support and the opportunity to keep raising the bar.
                 </p>
               </div>
             </RevealSection>
