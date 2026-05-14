@@ -154,6 +154,20 @@ function RevealSection({ children, className = '', delay = 0 }: { children: Reac
   );
 }
 
+function ServiceCard({ children, index }: { children: React.ReactNode; index: number }) {
+  const { ref, inView } = useInView(0.08);
+  const stagger = index * 90;
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-700 ease-out ${inView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-[0.97]'}`}
+      style={{ transitionDelay: `${stagger}ms` }}
+    >
+      {children}
+    </div>
+  );
+}
+
 export default function Home() {
   const vagaroRef = useRef<HTMLDivElement>(null);
 
@@ -333,10 +347,10 @@ export default function Home() {
 
             <div className="grid md:grid-cols-2 gap-x-10 gap-y-10">
               {SERVICES.map((cat, ci) => (
-                <RevealSection key={cat.id} delay={ci * 80}>
-                  <div className="bg-white/[0.02] border border-white/5 rounded-lg p-6 hover:border-gold/15 transition-all duration-300">
+                <ServiceCard key={cat.id} index={ci}>
+                  <div className="group service-card-shimmer bg-white/[0.02] border border-white/5 rounded-lg p-6 hover:border-gold/15 hover:bg-white/[0.035] hover:shadow-[0_0_30px_-5px_rgba(212,175,55,0.08)] transition-all duration-500">
                     <div className="flex items-center gap-3 mb-5">
-                      <div className="w-6 h-px bg-gold" />
+                      <div className="w-6 h-px bg-gold group-hover:w-8 transition-all duration-300" />
                       <h3 className="text-sm tracking-[0.15em] text-gold uppercase font-medium">{cat.label}</h3>
                     </div>
                     <ul className={cat.compact ? 'grid grid-cols-2 gap-x-3 gap-y-1' : 'space-y-2'}>
@@ -344,10 +358,10 @@ export default function Home() {
                         const name = typeof item === 'string' ? item : item.name;
                         const note = typeof item === 'string' ? null : item.note;
                         return (
-                          <li key={i} className="group flex items-start gap-2 py-0.5">
-                            <span className="mt-[7px] w-1 h-1 rounded-full bg-gold/30 group-hover:bg-gold transition-colors shrink-0" />
+                          <li key={i} className="group/item flex items-start gap-2 py-0.5">
+                            <span className="mt-[7px] w-1 h-1 rounded-full bg-gold/30 group-hover/item:bg-gold transition-colors shrink-0" />
                             <div className="min-w-0">
-                              <span className="text-[13px] text-gray-300 group-hover:text-gold transition-colors leading-snug">{name}</span>
+                              <span className="text-[13px] text-gray-300 group-hover/item:text-gold transition-colors leading-snug">{name}</span>
                               {note && <span className="text-[10px] text-gray-600 ml-1">({note})</span>}
                             </div>
                           </li>
@@ -355,13 +369,13 @@ export default function Home() {
                       })}
                     </ul>
                   </div>
-                </RevealSection>
+                </ServiceCard>
               ))}
             </div>
 
             {/* Coming Soon */}
-            <RevealSection delay={SERVICES.length * 80}>
-              <div className="mt-10 relative overflow-hidden rounded-lg border border-gold/20 bg-gradient-to-br from-gold/[0.04] to-transparent p-8">
+            <ServiceCard index={SERVICES.length}>
+              <div className="mt-10 relative overflow-hidden rounded-lg border border-gold/20 bg-gradient-to-br from-gold/[0.04] to-transparent p-8 hover:border-gold/35 hover:shadow-[0_0_40px_-5px_rgba(212,175,55,0.12)] transition-all duration-500">
                 <div className="absolute top-4 right-5">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold/10 border border-gold/25 text-gold text-[9px] tracking-[0.15em] uppercase font-medium">
                     <Clock className="w-3 h-3" />
@@ -374,14 +388,14 @@ export default function Home() {
                 </div>
                 <div className="grid sm:grid-cols-2 gap-x-8 gap-y-2">
                   {COMING_SOON.items.map((item, i) => (
-                    <div key={i} className="group flex items-center gap-2 py-1">
-                      <span className="w-1 h-1 rounded-full bg-gold/30 group-hover:bg-gold transition-colors shrink-0" />
-                      <span className="text-[13px] text-gray-400 group-hover:text-gold transition-colors">{item}</span>
+                    <div key={i} className="group/item flex items-center gap-2 py-1">
+                      <span className="w-1 h-1 rounded-full bg-gold/30 group-hover/item:bg-gold transition-colors shrink-0" />
+                      <span className="text-[13px] text-gray-400 group-hover/item:text-gold transition-colors">{item}</span>
                     </div>
                   ))}
                 </div>
               </div>
-            </RevealSection>
+            </ServiceCard>
 
             <RevealSection delay={SERVICES.length * 80 + 100}>
               <div className="text-center mt-10">
