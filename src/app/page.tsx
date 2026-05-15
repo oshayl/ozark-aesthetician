@@ -175,9 +175,6 @@ function RevealSection({ children, className = '', delay = 0 }: { children: Reac
 function ServiceSection({ cat, index }: { cat: typeof SERVICES[number]; index: number }) {
   const Icon = cat.icon;
   const isEven = index % 2 === 0;
-  const [imgLoaded, setImgLoaded] = useState(false);
-  const [imgError, setImgError] = useState(false);
-  const showImage = imgLoaded && !imgError;
 
   return (
     <div className={`group relative overflow-hidden ${isEven ? '' : ''}`}>
@@ -191,26 +188,22 @@ function ServiceSection({ cat, index }: { cat: typeof SERVICES[number]; index: n
           {/* Media / Image */}
           <div className={`w-full md:w-1/2 relative ${isEven ? '' : ''}`}>
             <div className="relative aspect-[4/5] rounded-sm overflow-hidden bg-charcoal">
-              {/* Placeholder pattern */}
-              <div className={`absolute inset-0 ${showImage ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}>
-                <div className="absolute inset-0 bg-gradient-to-br from-charcoal via-dark to-charcoal" />
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-                  <div className="w-16 h-16 rounded-full border border-gold/20 flex items-center justify-center">
-                    <Icon className="w-7 h-7 text-gold/40" />
-                  </div>
-                  <span className="text-[10px] tracking-[0.2em] text-gold/30 uppercase">{cat.label}</span>
-                  <span className="text-[9px] tracking-[0.15em] text-gray-600 uppercase">Media Coming Soon</span>
-                </div>
-              </div>
-              {/* Actual image (loads over placeholder) */}
-              {cat.image && (
+              {cat.image ? (
                 <img
                   src={cat.image}
                   alt={cat.label}
-                  onLoad={() => setImgLoaded(true)}
-                  onError={() => setImgError(true)}
-                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${showImage ? 'opacity-100' : 'opacity-0'}`}
+                  className="w-full h-full object-cover"
                 />
+              ) : (
+                <div className="absolute inset-0 bg-gradient-to-br from-charcoal via-dark to-charcoal">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
+                    <div className="w-16 h-16 rounded-full border border-gold/20 flex items-center justify-center">
+                      <Icon className="w-7 h-7 text-gold/40" />
+                    </div>
+                    <span className="text-[10px] tracking-[0.2em] text-gold/30 uppercase">{cat.label}</span>
+                    <span className="text-[9px] tracking-[0.15em] text-gray-600 uppercase">Media Coming Soon</span>
+                  </div>
+                </div>
               )}
               {/* Gold corner accent */}
               <div className={`absolute ${isEven ? 'bottom-0 left-0' : 'bottom-0 right-0'} w-24 h-24`}>
