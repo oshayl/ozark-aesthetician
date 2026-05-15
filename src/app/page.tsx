@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Sparkles, Gem, Trophy, Calendar, MapPin, ChevronDown, Droplets, Zap, Microscope, Heart, Star, Sun, Flame, Clock, Sparkle, Eye, Scissors, Syringe, PlusCircle, Layers } from 'lucide-react';
+import { Sparkles, Gem, Trophy, Calendar, MapPin, Droplets, Zap, Microscope, Heart, Star, Sun, Flame, Clock, Sparkle, Eye, Scissors, Syringe, PlusCircle, Layers } from 'lucide-react';
 
 const CREDENTIALS = [
   "Advanced Clinical Skin Specialist",
@@ -172,39 +172,79 @@ function RevealSection({ children, className = '', delay = 0 }: { children: Reac
   );
 }
 
-function ServiceAccordion({ cat, defaultOpen = false }: { cat: typeof SERVICES[number]; defaultOpen?: boolean }) {
-  const [open, setOpen] = useState(defaultOpen);
+function ServiceSection({ cat, index }: { cat: typeof SERVICES[number]; index: number }) {
   const Icon = cat.icon;
+  const isEven = index % 2 === 0;
+  const [imgLoaded, setImgLoaded] = useState(false);
+  const [imgError, setImgError] = useState(false);
+  const showImage = imgLoaded && !imgError;
+
   return (
-    <div className="border border-white/5 rounded-lg overflow-hidden transition-all duration-300 hover:border-gold/15 group">
-      <button
-        onClick={() => setOpen(!open)}
-        className="w-full flex items-center gap-4 p-5 text-left bg-white/[0.02] hover:bg-white/[0.04] transition-colors duration-300"
-      >
-        <div className="w-10 h-10 rounded-lg bg-gold/10 border border-gold/20 flex items-center justify-center shrink-0 group-hover:bg-gold/20 transition-colors duration-300">
-          <Icon className="w-5 h-5 text-gold" />
-        </div>
-        <div className="flex-1 min-w-0">
-          <h3 className="text-sm tracking-[0.1em] text-white font-medium uppercase group-hover:text-gold transition-colors duration-300">{cat.label}</h3>
-          <p className="text-[11px] text-gray-500 mt-0.5">{cat.items.length} service{cat.items.length !== 1 ? 's' : ''}</p>
-        </div>
-        <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform duration-300 ${open ? 'rotate-180' : ''}`} />
-      </button>
-      <div className={`transition-all duration-400 ease-in-out ${open ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
-        <div className="px-5 pb-5 pt-2 border-t border-white/5">
-          <ul className={cat.compact ? 'grid grid-cols-2 gap-x-4 gap-y-1.5' : 'space-y-2'}>
-            {cat.items.map((item, i) => {
-              const name = typeof item === 'string' ? item : item.name;
-              const note = typeof item === 'string' ? null : item.note;
-              return (
-                <li key={i} className="flex items-start gap-2 py-0.5">
-                  <span className="mt-[7px] w-1 h-1 rounded-full bg-gold/30 shrink-0" />
-                  <span className="text-[13px] text-gray-300 leading-snug">{name}</span>
-                  {note && <span className="text-[10px] text-gray-600 ml-1">({note})</span>}
-                </li>
-              );
-            })}
-          </ul>
+    <div className={`group relative overflow-hidden ${isEven ? '' : ''}`}>
+      {/* Section divider line */}
+      <div className="max-w-7xl mx-auto px-6 mb-16">
+        <div className="h-px bg-gradient-to-r from-transparent via-gold/15 to-transparent" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6">
+        <div className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-10 md:gap-16 items-center`}>
+          {/* Media / Image */}
+          <div className={`w-full md:w-1/2 relative ${isEven ? '' : ''}`}>
+            <div className="relative aspect-[4/5] rounded-sm overflow-hidden bg-charcoal">
+              {/* Placeholder pattern */}
+              <div className={`absolute inset-0 ${showImage ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}>
+                <div className="absolute inset-0 bg-gradient-to-br from-charcoal via-dark to-charcoal" />
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
+                  <div className="w-16 h-16 rounded-full border border-gold/20 flex items-center justify-center">
+                    <Icon className="w-7 h-7 text-gold/40" />
+                  </div>
+                  <span className="text-[10px] tracking-[0.2em] text-gold/30 uppercase">{cat.label}</span>
+                  <span className="text-[9px] tracking-[0.15em] text-gray-600 uppercase">Media Coming Soon</span>
+                </div>
+              </div>
+              {/* Actual image (loads over placeholder) */}
+              {cat.image && (
+                <img
+                  src={cat.image}
+                  alt={cat.label}
+                  onLoad={() => setImgLoaded(true)}
+                  onError={() => setImgError(true)}
+                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${showImage ? 'opacity-100' : 'opacity-0'}`}
+                />
+              )}
+              {/* Gold corner accent */}
+              <div className={`absolute ${isEven ? 'bottom-0 left-0' : 'bottom-0 right-0'} w-24 h-24`}>
+                <div className={`absolute ${isEven ? 'bottom-3 left-3' : 'bottom-3 right-3'} w-12 h-px bg-gold/30`} />
+                <div className={`absolute ${isEven ? 'bottom-3 left-3' : 'bottom-3 right-3'} w-px h-12 bg-gold/30`} />
+              </div>
+            </div>
+          </div>
+
+          {/* Content */}
+          <div className={`w-full md:w-1/2 ${isEven ? 'md:pl-4' : 'md:pr-4'}`}>
+            <div className="mb-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-9 h-9 rounded-md bg-gold/10 border border-gold/20 flex items-center justify-center">
+                  <Icon className="w-4 h-4 text-gold" />
+                </div>
+                <span className="text-[10px] tracking-[0.25em] text-gold uppercase font-medium">{cat.items.length} Service{cat.items.length !== 1 ? 's' : ''}</span>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-serif text-white leading-tight">{cat.label}</h3>
+            </div>
+            <ul className={`space-y-2.5 ${cat.compact ? 'grid grid-cols-2 gap-x-6 gap-y-2.5' : ''}`}>
+              {cat.items.map((item, i) => {
+                const name = typeof item === 'string' ? item : item.name;
+                const note = typeof item === 'string' ? null : item.note;
+                return (
+                  <li key={i} className="flex items-start gap-3 group/item">
+                    <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-gold/25 group-hover/item:bg-gold transition-colors shrink-0" />
+                    <span className="text-[13px] text-gray-300 leading-snug group-hover/item:text-white transition-colors">{name}</span>
+                    {note && <span className="text-[10px] text-gold/40 ml-1 self-center">({note})</span>}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -390,53 +430,68 @@ export default function Home() {
 
         {/* ── Services ── */}
         <section id="services" className="py-24 px-6 relative overflow-hidden">
-          <div className="absolute inset-0">
-            <img src="/images/hero/drone-1.png" alt="" className="w-full h-full object-cover opacity-[0.04] grayscale" />
-          </div>
-          <div className="relative z-10 max-w-2xl mx-auto">
+          <div className="relative z-10">
             <RevealSection>
-              <div className="text-center mb-16">
+              <div className="text-center mb-20">
                 <span className="text-[10px] tracking-[0.25em] text-gold uppercase font-medium">What We Offer</span>
                 <h2 className="text-3xl md:text-4xl font-serif mt-3">Our Services</h2>
-                <p className="text-gray-500 text-sm mt-3">Tap any category to see the full menu</p>
+                <p className="text-gray-500 text-sm mt-3">Scroll through our complete menu</p>
               </div>
             </RevealSection>
 
-            <div className="space-y-3">
-              {SERVICES.map((cat, ci) => (
-                <RevealSection key={cat.id} delay={ci * 60}>
-                  <ServiceAccordion cat={cat} defaultOpen={cat.id === 'medical-skin'} />
-                </RevealSection>
-              ))}
-            </div>
+            {SERVICES.map((cat, ci) => (
+              <RevealSection key={cat.id} delay={ci * 80}>
+                <ServiceSection cat={cat} index={ci} />
+              </RevealSection>
+            ))}
 
             {/* Coming Soon */}
-            <RevealSection delay={SERVICES.length * 60}>
-              <div className="mt-8 relative overflow-hidden rounded-lg border border-gold/20 bg-gradient-to-br from-gold/[0.04] to-transparent p-6 hover:border-gold/35 hover:shadow-[0_0_40px_-5px_rgba(212,175,55,0.12)] transition-all duration-500">
-                <div className="absolute top-4 right-5">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold/10 border border-gold/25 text-gold text-[9px] tracking-[0.15em] uppercase font-medium">
-                    <Clock className="w-3 h-3" />
-                    Coming Soon
-                  </span>
-                </div>
-                <div className="flex items-center gap-3 mb-5">
-                  <Flame className="w-5 h-5 text-gold" />
-                  <h3 className="text-sm tracking-[0.15em] text-gold uppercase font-medium">{COMING_SOON.label}</h3>
-                </div>
-                <div className="grid sm:grid-cols-2 gap-x-8 gap-y-2">
-                  {COMING_SOON.items.map((item, i) => (
-                    <div key={i} className="group/item flex items-center gap-2 py-1">
-                      <span className="w-1 h-1 rounded-full bg-gold/30 group-hover/item:bg-gold transition-colors shrink-0" />
-                      <span className="text-[13px] text-gray-400 group-hover/item:text-gold transition-colors">{item}</span>
+            <RevealSection delay={SERVICES.length * 80}>
+              <div className="max-w-7xl mx-auto px-6 mt-16">
+                <div className="h-px bg-gradient-to-r from-transparent via-gold/15 to-transparent" />
+              </div>
+              <div className="max-w-7xl mx-auto px-6 mt-16">
+                <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+                  <div className="w-full md:w-1/2 relative">
+                    <div className="relative aspect-[4/5] rounded-sm overflow-hidden bg-charcoal">
+                      <div className="absolute inset-0 bg-gradient-to-br from-charcoal via-dark to-charcoal" />
+                      <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
+                        <div className="w-16 h-16 rounded-full border border-gold/20 flex items-center justify-center">
+                          <Flame className="w-7 h-7 text-gold/40" />
+                        </div>
+                        <span className="text-[9px] tracking-[0.15em] text-gray-600 uppercase">Media Coming Soon</span>
+                      </div>
                     </div>
-                  ))}
+                  </div>
+                  <div className="w-full md:w-1/2">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold/10 border border-gold/25 text-gold text-[9px] tracking-[0.15em] uppercase font-medium">
+                        <Clock className="w-3 h-3" />
+                        Coming Soon
+                      </div>
+                    </div>
+                    <h3 className="text-2xl md:text-3xl font-serif text-white leading-tight mb-6">{COMING_SOON.label}</h3>
+                    <div className="grid sm:grid-cols-2 gap-x-8 gap-y-2.5">
+                      {COMING_SOON.items.map((item, i) => (
+                        <div key={i} className="group/item flex items-start gap-3">
+                          <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-gold/25 group-hover/item:bg-gold transition-colors shrink-0" />
+                          <span className="text-[13px] text-gray-300 leading-snug group-hover/item:text-white transition-colors">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </RevealSection>
 
-            <RevealSection delay={SERVICES.length * 60 + 100}>
-              <div className="text-center mt-10">
-                <a href="https://www.vagaro.com/Users/BusinessWidget.aspx?enc=MMLjhIwJMcwFQhXLL7ifVF3oikrklc1sIDB0VG7CXINPtAnDMVA4yNapI3NoQG1fDQ/K2ePvGait+Y/ayqZ4WLHCBUEDqMuESjI9fp1DDP9CBJ9GZ+zwCkdfgr0hQV0gtR6SPbTefAPX8LG2WnJ01k3cHXGsXHW7woUSHyRLI/fdwFUcIgqRay4W0ppU8kibhERfSXPQ2V9ipp/xM5VMAxL/Qz6gc77ThzVdg90DGzv91RlJ8k4PezUSl7FvaV4ae71SVL3lbfsY61I1kp2iEit9YjGqiYlna8SHZNE/tRmUOI3OC+AW+nXzz4ln2drf0Jp3pylgDU2qzAtovgrfvutl0YECfvOFa9zkdTJKdTbGRoq8LeDGib+uerjCEB/VaA1kmejr1Z2x6n1dxZgEBsOjaz1icfKsBmOxYgtna9U8VvaiGOXShTPdUx03Dna6czhnfahe6+ed8sWiHvUF6g==" target="_blank" rel="noopener noreferrer" className="inline-block px-8 py-3 bg-gold text-black text-sm font-medium tracking-[0.15em] uppercase hover:bg-gold-light transition-all duration-300 hover:shadow-lg hover:shadow-gold/20">
+            <RevealSection delay={SERVICES.length * 80 + 100}>
+              <div className="text-center mt-20">
+                <a
+                  href="https://www.vagaro.com/Users/BusinessWidget.aspx?enc=MMLjhIwJMcwFQhXLL7ifVF3oikrklc1sIDB0VG7CXINPtAnDMVA4yNapI3NoQG1fDQ/K2ePvGait+Y/ayqZ4WLHCBUEDqMuESjI9fp1DDP9CBJ9GZ+zwCkdfgr0hQV0gtR6SPbTefAPX8LG2WnJ01k3cHXGsXHW7woUSHyRLI/fdwFUcIgqRay4W0ppU8kibhERfSXPQ2V9ipp/xM5VMAxL/Qz6gc77ThzVdg90DGzv91RlJ8k4PezUSl7FvaV4ae71SVL3lbfsY61I1kp2iEit9YjGqiYlna8SHZNE/tRmUOI3OC+AW+nXzz4ln2drf0Jp3pylgDU2qzAtovgrfvutl0YECfvOFa9zkdTJKdTbGRoq8LeDGib+uerjCEB/VaA1kmejr1Z2x6n1dxZgEBsOjaz1icfKsBmOxYgtna9U8VvaiGOXShTPdUx03Dna6czhnfahe6+ed8sWiHvUF6g=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-8 py-3 bg-gold text-black text-sm font-medium tracking-[0.15em] uppercase hover:bg-gold-light transition-all duration-300 hover:shadow-lg hover:shadow-gold/20"
+                >
                   Book Your Treatment
                 </a>
               </div>
