@@ -510,7 +510,7 @@ export default function Home() {
                 <div>
                   <span className="text-[10px] tracking-[0.25em] text-gold uppercase font-medium">Your Aesthetician</span>
                   <h2 className="text-3xl md:text-4xl font-serif mt-3 mb-6">Miriah Adams</h2>
-                  <div className="relative w-52 h-52 mx-auto md:mx-0 mb-8 rounded-full overflow-hidden border-2 border-gold/30">
+                  <div className="relative w-52 h-64 mx-auto md:mx-0 mb-8 rounded-lg overflow-hidden border-2 border-gold/30">
                     <img src="/images/about/miriah-adams.jpg" alt="Miriah Adams" className="w-full h-full object-cover" />
                   </div>
                   <p className="text-gray-400 leading-relaxed mb-6">
