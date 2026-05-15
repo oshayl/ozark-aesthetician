@@ -510,8 +510,8 @@ export default function Home() {
                 <div>
                   <span className="text-[10px] tracking-[0.25em] text-gold uppercase font-medium">Your Aesthetician</span>
                   <h2 className="text-3xl md:text-4xl font-serif mt-3 mb-6">Miriah Adams</h2>
-                  <div className="relative w-52 h-64 mx-auto md:mx-0 mb-8 rounded-lg overflow-hidden border-2 border-gold/30">
-                    <img src="/images/about/miriah-adams.jpg" alt="Miriah Adams" className="w-full h-full object-cover" />
+                  <div className="relative w-80 h-48 mx-auto md:mx-0 mb-8 rounded-lg overflow-hidden border-2 border-gold/30">
+                    <img src="/images/about/miriah-adams.jpg" alt="Miriah Adams" className="w-full h-full object-cover object-top" />
                   </div>
                   <p className="text-gray-400 leading-relaxed mb-6">
                     With over <strong className="text-white">18 years</strong> in the aesthetics industry, Miriah brings unparalleled expertise to every treatment. Recognized as the <strong className="text-gold">Best Aesthetician</strong>{' '}by Lake Lifestyles Magazine&apos;s Best of the Lake 2026, she combines advanced clinical knowledge with a personalized approach to deliver real results.
