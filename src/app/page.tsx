@@ -447,13 +447,7 @@ export default function Home() {
                 <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
                   <div className="w-full md:w-1/2 relative">
                     <div className="relative aspect-[4/5] rounded-sm overflow-hidden bg-charcoal">
-                      <div className="absolute inset-0 bg-gradient-to-br from-charcoal via-dark to-charcoal" />
-                      <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-                        <div className="w-16 h-16 rounded-full border border-gold/20 flex items-center justify-center">
-                          <Flame className="w-7 h-7 text-gold/40" />
-                        </div>
-                        <span className="text-[9px] tracking-[0.15em] text-gray-600 uppercase">Media Coming Soon</span>
-                      </div>
+                      <img src="/images/services/laser.jpg" alt="Advanced Laser Services" className="w-full h-full object-cover" />
                     </div>
                   </div>
                   <div className="w-full md:w-1/2">
