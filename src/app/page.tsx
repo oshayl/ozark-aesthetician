@@ -261,16 +261,16 @@ export default function Home() {
             <div className="absolute bottom-0 left-0 right-0 h-px lake-shimmer" />
           </div>
 
-          <div className="relative z-10 text-center px-6 max-w-5xl mx-auto pt-16">
+          <div className="relative z-10 text-center px-6 max-w-5xl mx-auto pt-0">
             <RevealSection>
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-gold/30 mb-6 animate-fade-in">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-gold/30 mb-2 animate-fade-in">
                 <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
                 <span className="text-[10px] tracking-[0.2em] text-gold uppercase">Best of the Lake 2026</span>
               </div>
             </RevealSection>
 
             <RevealSection delay={150}>
-              <div className="mb-4">
+              <div className="mb-2">
                 <img src="/images/logo/logo-white.png" alt="The Ozark Aesthetician" className="w-[28rem] md:w-[44rem] lg:w-[56rem] mx-auto" />
               </div>
             </RevealSection>
