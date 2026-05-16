@@ -4,7 +4,6 @@ import Link from 'next/link';
 
 const NAV_ITEMS = [
   { label: "Services", href: "#services" },
-  { label: "Aerolase", href: "#aerolase" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];

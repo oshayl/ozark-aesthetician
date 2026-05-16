@@ -277,10 +277,10 @@ export default function Home() {
 
             <RevealSection delay={300}>
               <p className="text-lg md:text-xl text-gold font-light mb-2 tracking-wide">
-                Acne · Aging · Skin Correction Expert
+                Advanced Skin & Laser Treatments
               </p>
               <p className="text-base text-white mb-10">
-                Hydrafacial · Microneedling · Customized Skincare
+                Laser Rejuvenation · Corrective Facials · Advanced Skincare
               </p>
             </RevealSection>
 
